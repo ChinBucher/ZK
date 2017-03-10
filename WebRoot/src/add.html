@@ -1,0 +1,67 @@
+<#include "/common/_layout.html" />
+<@layout>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#sub").click(function(){
+	  //获取新文件的文件名
+	  	var edoc, epic;
+		var docFileValue =  $("#docfile")[0].value,
+			  picFileValue =  $("#picfile")[0].value;
+		
+		if(docFileValue.length != 0){
+			var valueDoc = new Array(),
+			valueDoc = docFileValue.split("\\");
+			var fdoc = valueDoc[valueDoc.length-1];
+			edoc = fdoc;
+		}else{
+			edoc = " ";
+		}
+		
+		if(picFileValue.length != 0){
+			var valuePic = new Array(),
+			valuePic = picFileValue.split("\\");
+			var fpic = valuePic[valuePic.length-1];
+			epic = fpic;
+		}else{
+			epic = " ";
+		}
+		
+		$("#doc")[0].value = edoc;
+		$("#pic")[0].value = epic;
+		});
+});
+</script>
+<h1>资源管理 ---&gt; 创建
+</h1>
+<div class="form_box">
+	<form action="/src/up" method="post" enctype="multipart/form-data">
+		<fieldset class="solid">
+			<legend>资源</legend>
+			<input type="hidden" name="source.id" value="${(source.id)!}" />
+			<input type="hidden" name="source.author" value="admin" />
+			<input type="hidden" name="source.author_id" value="1" />
+			<input id="doc" type="hidden" name="source.docpath" value="${(source.docpath)!}" />
+			<input id="pic" type="hidden" name="source.picpath" value="${(source.picpath)!}" />
+			<div>
+				<label>标题</label>
+				<input type="text" name="source.title" value="${(source.title)!}" />${titleMsg!}
+				&nbsp;&nbsp;
+				<label>类别</label>
+				<input type="text" name="source.type" value="${(source.type)!}" />${typeMsg!}
+			</div>
+			<div>
+				<label>内容</label>
+				<textarea name="source.content" cols="80" rows="10">${(source.content)!}</textarea>${contentMsg!}
+			</div>
+			<br>
+			<br>
+			<div>
+				<input type="file" id="docfile" name="source.docpath"></input>
+				<input type="file" id="picfile" name="source.picpath"></input>
+				<label>&nbsp;</label>
+				<input id="sub" value="提交" type="submit">
+			</div>
+		</fieldset>
+	</form>
+</div>
+</@layout>

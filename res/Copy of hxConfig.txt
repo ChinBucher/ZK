@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://localhost/hx
+user = root
+password = 
+devMode = true

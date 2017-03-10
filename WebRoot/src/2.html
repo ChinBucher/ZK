@@ -1,0 +1,134 @@
+<!-- modify for hx from 2.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- 本地文件 -->
+	<link rel="stylesheet" type="text/css" href="${CTX}/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${CTX}/css/bootstrap-theme.min.css">
+	<script type="text/javascript" src="${CTX}/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+	*{
+  		margin:0;
+  		padding: 0;
+  	}
+	body{
+		/*background-color: #FCFCFC;*/
+		background: #FCFCFC;
+		padding: 1% 3%;
+	}
+	.headder{
+		margin: 3%  auto;
+	}
+	.end{
+		border-top: dashed 2px grey;
+		border-bottom: dashed 2px grey;
+		padding: 3px;
+		margin-bottom: 10px;
+	}
+	.choice{
+		margin-bottom: 0;
+	}
+	.choice li{
+		line-height: 30px;
+		display: inline;
+		margin: auto 5px;
+	}
+</style>
+
+<div class="headder">
+	<ul class="nav nav-pills nav-justified">
+	  <li role="presentation" class="btn-info"><a href="/">Home</a></li>
+	  <li role="presentation" class="btn-info"><a href="#">Profile</a></li>
+	  <li role="presentation" class="btn-info"><a href="${CTX}/user">用户列表</a></li>
+	</ul>
+</div>
+
+<h1>Source管理&nbsp;&nbsp;
+<a href="/src/add">创建</a>
+</h1>
+
+<div class="table_box" >
+<div class="article">
+	<h1>
+		<ol class="breadcrumb">
+		  <li><a href="/">Home</a></li>
+		  <li><a href="#">Library</a></li>
+		  <li class="active">Data</li>
+		</ol>
+	</h1>
+	<!-- 重复对象 -->
+	<article>
+		<div class="media" style="margin-bottom: 10px;">
+	      <div class="media-left">
+	        <a href="#">
+	          <img class="media-object" src="${CTX}/${p}/吉他.jpg" alt="" style="width: 240px; height: 240px;">
+	        </a>
+	      </div>
+	      <div class="media-body">
+	        <h4 class="media-heading">Media heading</h4>
+	        <p>
+	        	Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+	        </p>
+	      </div>
+	    </div>
+
+		<div class="end">
+			<ul class="choice">
+				<li><span class="glyphicon glyphicon-calendar" aria-hidden="true">Time</span></li>
+				
+				<li><span class="glyphicon glyphicon-tasks" aria-hidden="true"><a href="#">管理</a></span></li>
+				<li><span class="glyphicon glyphicon-comment" aria-hidden="true"><a href="#">讨论</a></span></li>
+				<li><span class="glyphicon glyphicon-bookmark" aria-hidden="true"><a href="#">查看次数</a></span></li>
+				<li><span class="glyphicon glyphicon-link" aria-hidden="true"><a href="#">分享</a></span></li>
+				<li><span class="glyphicon glyphicon-share" aria-hidden="true"><a href="#">分享</a></span></li>
+			</ul>
+		</div>	
+	</article>
+		<h1>上面的是案例demo</h1>
+		<hr>
+		
+	<#list srcPage.getList() as x>
+	<article>
+		<div class="media" style="margin-bottom: 10px;">
+	      <div class="media-left">
+	        <a href="#">
+	          <img class="media-object" src="${CTX}/${p}/${x.picpath}" alt="" style="width: 240px; height: 240px;">
+	        </a>
+	      </div>
+	      <div class="media-body">
+	        <h4 class="media-heading">${x.title}</h4>
+	        <p>
+	        	${x.content}
+	        </p>
+	      </div>
+	    </div>
+
+		<div class="end">
+			<ul class="choice">
+				<li><span class="glyphicon glyphicon-calendar" aria-hidden="true">Time</span></li>
+				
+				<li><span class="glyphicon glyphicon-tasks" aria-hidden="true"><a href="#">管理</a></span></li>
+				<li><span class="glyphicon glyphicon-comment" aria-hidden="true"><a href="#">讨论</a></span></li>
+				<li><span class="glyphicon glyphicon-bookmark" aria-hidden="true"><a href="#">查看次数</a></span></li>
+				<li><span class="glyphicon glyphicon-link" aria-hidden="true"><a href="#">分享</a></span></li>
+				<li><span class="glyphicon glyphicon-share" aria-hidden="true"><a href="#">分享</a></span></li>
+			</ul>
+		</div>	
+	</article>
+	</#list>
+
+	<#include "/common/_paginate.html" />
+	<@paginate currentPage=srcPage.pageNumber totalPage=srcPage.totalPage actionUrl="/src/" />
+</div>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<style type="text/css">
+	div{
+		margin: 1% auto;
+	}
+	.form{
+		position: absolute;
+		  width: 400px;
+		  height: 400px;
+		  left: 50%;
+		  top: 50%;
+		  margin-top: -200px;
+		  margin-left: -200px;
+	}
+</style>
+	<script src="${CTX}/js/jquery.min.js"></script>
+    <script type="text/javascript">
+    	//$("#btn").onclick = 
+    		function test(){
+    		//alert("onclick");
+			$.ajax({
+				cache: true,
+				type: "POST",
+				url: "${CTX}/user/login",
+				data: $("#myform").serialize(),
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					 alert("XMLHttpRequest.status: "+XMLHttpRequest.status);
+					 alert("XMLHttpRequest.readyState: "+XMLHttpRequest.readyState);
+					 alert("textStatus: "+textStatus);
+				 },
+				success: function(data){
+					//alert("success");
+					console.log("data code: "+data.code);
+					if(data.code == 0){
+						$("password").focus();
+						$("#common").html("username or password incorrect");
+					}else if(data.code == 1){
+						//alert("login succeed");
+						$("#common").html("login succeed");
+						if(data.name == "admin"){
+							window.location = "${CTX}/user";
+						}else{
+							window.location = "${CTX}/user/detail";
+						}
+					}else{
+						$("#common").html("error code:"+data.code+";"+data.message);
+					}
+				}
+			});
+    	}
+    	
+    	//}
+    	
+    </script>
+</head>
+<body>
+  <div class=headder>
+  			<h1><a href="/">首页</a></h1>
+  </div>
+  
+  <div class="form">
+  	<h2>Login</h2>
+  	<form id="myform">
+  		<label>Name:</label>
+  		<div>
+  			<input id="loginName" name="loginName" type="text">
+  		</div>
+  		<label>Password</label>
+  		<div>
+  			<input id="password" name="password" type="password">
+  		</div>
+  		<div>
+  			<!-- 
+  			<button type="submit">登陆</button>
+  			 -->
+  			 <input id="btn" type="button" value="登陆"  onclick="javascript:test();"/>
+  			 <input type="reset" value="重置" />
+  		</div>
+  	</form>
+  	<div id="common"></div>
+  </div>
+
+
+</body>
+</html>

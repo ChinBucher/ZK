@@ -1,0 +1,77 @@
+<#include "/common/_layout.html"/>
+<@layout>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册</title>
+<style>
+	.form_box{
+		margin:auto 40%;
+	}
+	h1{
+	text-align:center;
+	}
+</style>
+</head>
+<script src="${CTX}/js/jquery.min.js"></script>
+    <script type="text/javascript">
+    function test(){
+		//alert("onclick");
+		$.ajax({
+			cache: true,
+			type: "POST",
+			url: "${CTX}/user/register",
+			data: $("#myform").serialize(),
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				 alert("XMLHttpRequest.status: "+XMLHttpRequest.status);
+				 alert("XMLHttpRequest.readyState: "+XMLHttpRequest.readyState);
+				 alert("textStatus: "+textStatus);
+			 },
+			success: function(data){
+				//alert("success");
+				console.log("data code: "+data.code);
+				if(data.code == -1){
+					$("user.name").focus();
+					$("#common").html("can not be null");
+				}else if(data.code == 0){
+					$("user.name").focus();
+					$("#common").html("username is used");
+				}else if(data.code == 1){
+					$("#common").html("register succeed");
+					window.location = "${CTX}/login";
+					alert("register succeed,loading login");
+				}else{
+					$("#common").html("error code:"+data.code+";"+data.message);
+				}
+			}
+		});
+	}
+    
+    
+    </script>
+
+<body>
+<div class="form_box">
+	<h1>Register</h1>
+	 <form id="myform"  name="register" >
+	 <!-- 
+		<input type="hidden" name="user.role" value="${(user.role)!}" />
+	 -->
+		<input type="hidden" name="user.role" value="0" />
+		姓名：
+		<input type="text" id="registerName" name="user.name" value="${(user.name)!}" />${nameMsg!}<br>
+		密码：
+		<input type="password" id="registerPwd" name="user.pwd"/>${pwdMsg!}<br/>
+		<!-- 
+		<input type="submit" value="注册"/>
+		 -->
+		 <input id="register" type="button" value="注册" onclick="javascript:test();"/>
+		<input type="reset" name="重置">
+	</form>
+	<div id="common"></div>
+</div>
+
+</body>
+</html>
+</@layout>

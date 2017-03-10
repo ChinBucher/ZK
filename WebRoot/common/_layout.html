@@ -1,0 +1,41 @@
+<#macro layout>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="${CTX}/js/jquery.min.js"></script>
+    
+    <!-- bootstrap -->
+	<script src="${CTX}/js/bootstrap.min.js"></script>
+	
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <!-- Bootstrap -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <#-- base href="${CTX}" / -->
+  </head>
+  <body>
+    <div class="container">
+    	<!-- headder -->
+    	<div class=headder>
+  			<h1><a href="/">首页</a></h1>
+  			<h3><a href="${CTX}/user/logout">退出</a></h3>
+    	</div>
+    	<!-- content -->
+    	<div class="content">
+    		<#nested>
+    	</div>
+    </div>
+
+  </body>
+</html>
+
+</#macro>

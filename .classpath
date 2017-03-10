@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/freemarker-2.3.20.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/jetty-server-8.1.8.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/jfinal-2.2-bin.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/jfinal-2.2-bin-with-src.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/jfinal-weixin-1.7-bin-with-src.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/JF/jar/mysql-connector-java-5.1.20-bin.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/Jfinal/cos.jar"/>
+	<classpathentry kind="lib" path="E:/OTHERS/实习/X/Jfinal/junit-4.7.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

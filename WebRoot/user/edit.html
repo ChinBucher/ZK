@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit</title>
+</head>
+<style>
+	input{
+	margin: 1% auto;
+	}
+	.form_box{
+		position: absolute;
+		  width: 400px;
+		  height: 400px;
+		  left: 50%;
+		  top: 50%;
+		  margin-top: -200px;
+		  margin-left: -200px;
+	}
+</style>
+<body>
+<h1><a href="/index">首页</a></h1>
+<div class="form_box">
+	<form action="/user/update" method="post">
+		<input type="hidden" name="user.id" value="${(user.id)!}" />
+		姓名：
+		<input type="text" name="user.name" value="${(user.name)!}" />${nameMsg!}<br/>
+		密码：
+		<input type="text" name="user.pwd"  value="${(user.pwd)!}"/>${pwdMsg!}<br/>
+		<input value="提交" type="submit">
+	</form>
+</div>
+
+</body>
+</html>
