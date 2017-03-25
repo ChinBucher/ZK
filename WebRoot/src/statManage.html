@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>StatManage</title>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- 本地文件 -->
+	<link rel="stylesheet" type="text/css" href="${CTX}/css/bootstrap.min.css">
+	<script type="text/javascript" src="${CTX}/js/jquery.min.js"></script>
+	<script type="text/javascript" src="${CTX}/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+	*{
+  		margin:0;
+  		padding: 0;
+  	}
+	body{
+		/*background-color: #FCFCFC;*/
+		background: #FCFCFC;
+		padding: 1% 3%;
+	}
+	.headder{
+		margin: 3%  auto;
+	}
+	.end{
+		border-top: dashed 2px grey;
+		border-bottom: dashed 2px grey;
+		padding: 3px;
+		margin-bottom: 10px;
+	}
+	.choice{
+		margin-bottom: 0;
+	}
+	.choice li{
+		line-height: 30px;
+		display: inline;
+		margin: auto 5px;
+	}
+</style>
+<!-- <style type="text/css">
+	th, tr{
+		text-align: center;
+	}
+</style> -->
+<script type="text/javascript">
+function dd(){
+	if(confirm("确认删除？")){
+		return ture;
+	}
+	return false;
+}
+	
+</script>
+<h1>政策法规管理&nbsp;&nbsp;
+<a href="${CTX}/statute/add">创建</a>
+</h1>
+
+<!-- ################### -->
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">政策法规</div>
+  <!-- Table -->
+  <table class="table">
+        <thead>
+          <tr>
+            <!-- <th>id</th> -->
+            <th>Title</th>
+            <th>Date</th>
+            <th>Username</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+        <!-- ****重复部分***** -->
+          <#list statPage.getList() as x>
+          <tr>
+            <!-- <th scope="row">${x.id}</th> -->
+            <td><a href="${CTX}/statute/detailEdit/${x.id}">${x.title}</a></td>
+            <td>${x.date}</td>
+            <td>${x.author}</td>
+            <td>
+				&nbsp;&nbsp;<a href="${CTX}/statute/delete/${x.id}" onclick="return dd();">删除</a>
+				&nbsp;&nbsp;<a href="${CTX}/statute/edit/${x.id}">修改</a>
+				&nbsp;&nbsp;<a href="${CTX}/statute/download/${x.id}">下载</a>${(downMsgMsg)!}
+			</td>
+          </tr>
+          </#list>
+
+        </tbody>
+      </table>
+      
+</div>
+	  <#include "/common/_paginate_.html" />
+	  <@paginate currentPage=statPage.pageNumber totalPage=statPage.totalPage actionUrl="${CTX}/statute" />

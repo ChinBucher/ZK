@@ -1,0 +1,75 @@
+<#include "/common/_layout.html" />
+<@layout>
+<script type="text/javascript">
+$(document).ready(function(){
+	console.log("############");
+	//获取初始值
+	var spic = $("#pic")[0].value;
+	console.log("spic: "+spic);
+	console.log("spic_length: " + spic.length);
+	
+  $("#sub").click(function(){
+	  	//文本替换， 回车控制
+	  	if($("#cont")[0].value.length == 0){
+			// alert("null");
+			$("#cont2")[0].value = " ";
+		}else{
+			// alert("count: "+$("#cont")[0].value);
+		  	var cont = $("#cont")[0].value.replace(/\n/g,"<br>");
+		  	// alert("count2: "+cont);
+		  	$("#cont2")[0].value = cont;
+		}
+
+	  //获取新文件的文件名
+	  	var epic;
+		var picFileValue =  $("#picfile")[0].value;
+		console.log("length: " + picFileValue.length);
+
+		if(picFileValue.length != 0){
+			var valuePic = new Array(),
+			valuePic = picFileValue.split("\\");
+			var fpic = valuePic[valuePic.length-1];
+			
+			epic = fpic;
+		}else{
+			epic = spic;
+		}
+		
+		console.log("epic_edit: "+epic);
+		console.log("epic_length_edit: " + epic.length);
+		$("#pic")[0].value = epic;
+		console.log("value: " + $("#pic")[0].value);
+		});
+});
+</script>
+
+<div class="form_box">
+	<form action="${CTX}/subject/update" method="post" enctype="multipart/form-data">
+		<fieldset class="solid">
+			<legend><h1>分中心管理&nbsp;<small>修改</small></h1></legend>
+			<input type="hidden" name="subcenter.id" value="${(subcenter.id)!}" />
+			<input type="hidden" name="subcenter.picpath" value="${(subcenter.picpath)!}" id="pic" />
+			<div>
+				<label>分中心：</label>
+				<input type="text" name="subcenter.name" value="${(subcenter.name)!}" />${nameMsg!}&nbsp;&nbsp;
+				<br>
+			</div>
+			<div>
+				<label style="vertical-align: top">简&nbsp;&nbsp;介：</label>
+				<textarea id="cont" name="content" cols="80" rows="10">${(subcenter.title)!}</textarea>${titleMsg!}
+				<textarea id="cont2" name="subcenter.title" cols="80" rows="10" style="display:none;"></textarea>
+			</div>
+			<br>
+			<div>
+				<label>图片上传：</label>
+				<input type="file" id="picfile" name="subcenter.picpath"><br>
+				<label>&nbsp;</label>
+				<br>
+				<input id="sub" value="提交" type="submit">
+			</div>
+		</fieldset>
+	</form>
+</div>
+</@layout>
+
+

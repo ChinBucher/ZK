@@ -1,0 +1,68 @@
+<#include "/common/_layout.html" />
+<@layout>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#sub").click(function(){
+
+		//文本替换， 回车控制
+		if($("#cont")[0].value.length == 0){
+			// alert("null");
+			$("#cont2")[0].value = " ";
+		}else{
+			// alert($("#cont")[0].value);
+		  	var cont = $("#cont")[0].value.replace(/\n/g,"<br>");
+		  	// alert(cont);
+		  	$("#cont2")[0].value = cont;
+		}
+	  	
+
+	  //获取新文件的文件名
+	  	var epic;
+		var picFileValue =  $("#picfile")[0].value;
+		
+		if(picFileValue.length != 0){
+			var valuePic = new Array(),
+			valuePic = picFileValue.split("\\");
+			var fpic = valuePic[valuePic.length-1];
+			epic = fpic;
+		}else{
+			epic = " ";
+		}
+		
+
+		$("#pic")[0].value = epic;
+		});
+});
+</script>
+<h1>分中心 ---&gt; 添加
+</h1>
+<div class="form_box">
+	<form action="${CTX}/subject/upload" method="post" enctype="multipart/form-data">
+		<fieldset class="solid">
+			<legend>资源</legend>
+			<input type="hidden" name="subcenter.id" value="${(subcenter.id)!}" />
+			<input id="pic" type="hidden" name="subcenter.picpath" value="${(subcenter.picpath)!}" />
+			<div>
+				<label>分中心：</label>
+				<input type="text" name="subcenter.name" value="${(subcenter.name)!}" />${nameMsg!}
+			</div>
+			<div>
+				<label style="vertical-align: top">简&nbsp;&nbsp;&nbsp;介：</label>
+				<textarea id="cont" name="content" cols="80" rows="10"></textarea>
+				<textarea id="cont2" name="subcenter.title" cols="80" rows="10" style="display:none"></textarea>
+			</div>
+			<br>
+			<div>
+				<label>上传图片：</label>
+				<input type="file" id="picfile" name="subcenter.picpath"></input>
+				<label>&nbsp;</label>
+				<br>
+				<input id="sub" value="提交" type="submit">
+			</div>
+		</fieldset>
+	</form>
+</div>
+</@layout>
+
+		
+

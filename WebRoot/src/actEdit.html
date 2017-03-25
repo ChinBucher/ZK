@@ -1,0 +1,131 @@
+<#include "/common/_layout.html" />
+<@layout>
+<script type="text/javascript">
+$(document).ready(function(){
+	//获取初始值
+	var sdoc = $("#doc")[0].value,
+		  spic = $("#pic")[0].value;
+	
+  $("#sub").click(function(){
+	  	//文本替换， 回车控制
+	  	if($("#cont")[0].value.length == 0){
+			// alert("null");
+			$("#cont2")[0].value = " ";
+		}else{
+			// alert("count: "+$("#cont")[0].value);
+		  	var cont = $("#cont")[0].value.replace(/\n/g,"<br>");
+		  	// alert("count2: "+cont);
+		  	$("#cont2")[0].value = cont;
+		}
+
+	  //获取新文件的文件名
+	  	var edoc, epic;
+		var docFileValue =  $("#docfile")[0].value,
+			  picFileValue =  $("#picfile")[0].value;
+		
+		if(docFileValue.length != 0){
+			var valueDoc = new Array(),
+			valueDoc = docFileValue.split("\\");
+			var fdoc = valueDoc[valueDoc.length-1];
+			
+			edoc = fdoc;
+		}else{
+			edoc = sdoc;
+		}
+		
+		if(picFileValue.length != 0){
+			var valuePic = new Array(),
+			valuePic = picFileValue.split("\\");
+			var fpic = valuePic[valuePic.length-1];
+			
+			epic = fpic;
+		}else{
+			epic = spic;
+		}
+		
+		
+		$("#doc")[0].value = edoc;
+		$("#pic")[0].value = epic;
+		//更新文件名
+		});
+});
+</script>
+<div class="form_box">
+	<form action="${CTX}/active/update" method="post" enctype="multipart/form-data">
+		<fieldset class="solid">
+			<legend><h1>新闻管理&nbsp;<small>修改</small></h1></legend>
+			<input type="hidden" name="active.id" value="${(active.id)!}" />
+			<input type="hidden" name="active.author" value="${(active.author)!}" />
+			<input type="hidden" name="active.author_id" value="${(active.author_id)!}" />
+			<input type="hidden" name="active.day" value="${(active.day)!}" />
+			<input type="hidden" name="active.month" value="${(active.month)!}" />
+			<input type="hidden" name="active.count" value="${(active.count)!}" />
+			<input type="hidden" name="active.docpath" value="${(active.docpath)!}" id="doc" />
+			<input type="hidden" name="active.picpath" value="${(active.picpath)!}" id="pic" />
+			<div>
+				<label>标题：</label>
+				<input type="text" name="active.title" value="${(active.title)!}" />${titleMsg!}
+				&nbsp;&nbsp;
+				<label>政策发布日期：</label>
+				<input type="text" name="active.datec" value="${(active.type)!}" />${typeMsg!}
+			</div>
+			<div>
+				<label style="vertical-align: top">内容：</label>
+				<textarea id="cont" name="content" cols="80" rows="10">${(active.content)!}</textarea>${contentMsg!}
+				<textarea id="cont2" name="active.content" cols="80" rows="10" style="display:none;"></textarea>
+			</div>
+			<br>
+			<div>
+				<label style="display: none;">文件上传：</label>
+				<input style="display: none;" type="file" id="docfile" name="active.docpath"><br>
+				<label>图片上传：</label>
+				<input type="file" id="picfile" name="active.picpath"><br>
+				<label>&nbsp;</label>
+				<br>
+				<input id="sub" value="提交" type="submit">
+			</div>
+		</fieldset>
+	</form>
+</div>
+
+<!-- <h1>资源管理 ---&gt; 修改
+</h1>
+<div class="form_box">
+	<form action="/active/update" method="post" enctype="multipart/form-data">
+		<fieldset class="solid">
+			<legend>资源</legend>
+			<input type="hidden" name="active.id" value="${(active.id)!}" />
+			<input type="hidden" name="active.author" value="${(active.author)!}" />
+			<input type="hidden" name="active.author_id" value="${(active.author_id)!}" />
+			<input type="hidden" name="active.day" value="${(active.day)!}" />
+			<input type="hidden" name="active.month" value="${(active.month)!}" />
+			<input type="hidden" name="active.count" value="${(active.count)!}" />
+			<input id="doc" type="hidden" name="active.docpath" value="${(active.docpath)!}" />
+			<input id="pic" type="hidden" name="active.picpath" value="${(active.picpath)!}" />
+			<div>
+				<label>标题</label>
+				<input type="text" name="active.title" value="${(active.title)!}" />${titleMsg!}
+				&nbsp;&nbsp;
+				<label>类别</label>
+				<input type="text" name="active.type" value="${(active.type)!}" />${typeMsg!}
+			</div>
+			<div>
+				<label>内容</label>
+				<textarea id="cont" name="active.content" cols="80" rows="10">${(active.content)!}</textarea>${contentMsg!}
+			</div>
+			<br>
+			<div>
+				<label>文件上传：</label>
+				<input type="file" id="docfile" name="active.docpath"></input>
+				<label>图片上传：</label>
+				<input type="file" id="picfile" name="active.picpath"></input>
+				<label>&nbsp;</label>
+				<br>
+				<input id="sub" value="提交" type="submit">
+			</div>
+		</fieldset>
+	</form>
+</div> -->
+</@layout>
+
+

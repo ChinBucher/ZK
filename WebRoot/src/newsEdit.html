@@ -1,0 +1,93 @@
+<#include "/common/_layout.html" />
+<@layout>
+<script type="text/javascript">
+$(document).ready(function(){
+	console.log("############");
+	//获取初始值
+	var sdoc = $("#doc")[0].value,
+		  spic = $("#pic")[0].value;
+	
+  $("#sub").click(function(){
+	  	//文本替换， 回车控制
+	  	if($("#cont")[0].value.length == 0){
+			// alert("null");
+			$("#cont2")[0].value = " ";
+		}else{
+			// alert("count: "+$("#cont")[0].value);
+		  	var cont = $("#cont")[0].value.replace(/\n/g,"<br>");
+		  	// alert("count2: "+cont);
+		  	$("#cont2")[0].value = cont;
+		}
+
+	  //获取新文件的文件名
+	  	var edoc, epic;
+		var docFileValue =  $("#docfile")[0].value,
+			  picFileValue =  $("#picfile")[0].value;
+		
+		if(docFileValue.length != 0){
+			var valueDoc = new Array(),
+			valueDoc = docFileValue.split("\\");
+			var fdoc = valueDoc[valueDoc.length-1];
+			
+			edoc = fdoc;
+		}else{
+			edoc = sdoc;
+		}
+		
+		if(picFileValue.length != 0){
+			var valuePic = new Array(),
+			valuePic = picFileValue.split("\\");
+			var fpic = valuePic[valuePic.length-1];
+			
+			epic = fpic;
+		}else{
+			epic = spic;
+		}
+		
+		
+		$("#doc")[0].value = edoc;
+		$("#pic")[0].value = epic;
+		});
+});
+</script>
+
+<div class="form_box">
+	<form action="${CTX}/news/update" method="post" enctype="multipart/form-data">
+		<fieldset class="solid">
+			<legend><h1>新闻管理&nbsp;<small>修改</small></h1></legend>
+			<input type="hidden" name="news.id" value="${(news.id)!}" />
+			<input type="hidden" name="news.author" value="${(news.author)!}" />
+			<input type="hidden" name="news.author_id" value="${(news.author_id)!}" />
+			<input type="hidden" name="news.day" value="${(news.day)!}" />
+			<input type="hidden" name="news.month" value="${(news.month)!}" />
+			<input type="hidden" name="news.count" value="${(news.count)!}" />
+			<input type="hidden" name="news.docpath" value="${(news.docpath)!}" id="doc" />
+			<input type="hidden" name="news.picpath" value="${(news.picpath)!}" id="pic" />
+			<div>
+				<label>标题：</label>
+				<input type="text" name="news.title" value="${(news.title)!}" />${titleMsg!}&nbsp;&nbsp;
+				<br>
+				<!-- <label>类别：</label>
+				<input type="text" name="news.type" value="${(news.type)!}" />${typeMsg!} -->
+			</div>
+			<div>
+				<label style="vertical-align: top">内容：</label>
+				<textarea id="cont" name="content" cols="80" rows="10">${(news.content)!}</textarea>${contentMsg!}
+				<textarea id="cont2" name="news.content" cols="80" rows="10" style="display:none;"></textarea>
+			</div>
+			<br>
+			<div>
+				<label style="display: none;">文件上传：</label>
+				<input style="display: none;" type="file" id="docfile" name="news.docpath"><br>
+				<label>图片上传：</label>
+				<input type="file" id="picfile" name="news.picpath"><br>
+				<label>&nbsp;</label>
+				<br>
+				<input id="sub" value="提交" type="submit">
+			</div>
+		</fieldset>
+	</form>
+</div>
+</@layout>
+
+

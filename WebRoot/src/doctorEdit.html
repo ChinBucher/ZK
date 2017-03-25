@@ -1,0 +1,70 @@
+<#include "/common/_layout.html" />
+<@layout>
+<script type="text/javascript">
+$(document).ready(function(){
+	console.log("############");
+	//获取初始值
+	var spic = $("#pic")[0].value;
+	
+  $("#sub").click(function(){
+	  	//文本替换， 回车控制
+	  	if($("#cont")[0].value.length == 0){
+			alert("null");
+			$("#cont2")[0].value = " ";
+		}else{
+			// alert("count: "+$("#cont")[0].value);
+		  	var cont = $("#cont")[0].value.replace(/\n/g,"<br>");
+		  	// alert("count2: "+cont);
+		  	$("#cont2")[0].value = cont;
+		}
+
+	  //获取新文件的文件名
+	  	var epic;
+		var picFileValue =  $("#picfile")[0].value;
+		
+		if(picFileValue.length != 0){
+			var valuePic = new Array(),
+			valuePic = picFileValue.split("\\");
+			var fpic = valuePic[valuePic.length-1];
+			
+			epic = fpic;
+		}else{
+			epic = spic;
+		}
+		
+		
+		$("#pic")[0].value = epic;
+		});
+});
+</script>
+
+<div class="form_box">
+	<form action="${CTX}/services/update" method="post" enctype="multipart/form-data">
+		<fieldset class="solid">
+			<legend><h1>团队管理&nbsp;<small>修改</small></h1></legend>
+			<input type="hidden" name="doctor.id" value="${(doctor.id)!}" />
+			<input type="hidden" name="doctor.picpath" value="${(doctor.picpath)!}" id="pic" />
+			<div>
+				<label>姓名：</label>
+				<input type="text" name="doctor.name" value="${(doctor.name)!}" />${titleMsg!}&nbsp;&nbsp;
+				<br>
+			</div>
+			<div>
+				<label style="vertical-align: top">职称：</label>
+				<textarea id="cont" name="content" cols="80" rows="10">${(doctor.title)!}</textarea>${titleMsg!}
+				<textarea id="cont2" name="doctor.title" cols="80" rows="10" style="display:none;"></textarea>
+			</div>
+			<br>
+			<div>
+				<label>图片上传：</label>
+				<input type="file" id="picfile" name="doctor.picpath"><br>
+				<label>&nbsp;</label>
+				<br>
+				<input id="sub" value="提交" type="submit">
+			</div>
+		</fieldset>
+	</form>
+</div>
+</@layout>
+
+
