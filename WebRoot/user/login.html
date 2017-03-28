@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<style type="text/css">
-	div{
-		margin: 1% auto;
-	}
-	.form{
-		position: absolute;
-		  width: 400px;
-		  height: 400px;
-		  left: 50%;
-		  top: 50%;
-		  margin-top: -200px;
-		  margin-left: -200px;
-	}
-</style>
-	<script src="${CTX}/js/jquery.min.js"></script>
-    <script type="text/javascript">
-    	//$("#btn").onclick = 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <title>Login</title>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <style type="text/css">
+    	body{ 
+    		background-color: #EAEAEA;
+    	}
+   		h1{ 
+   			text-align: center;
+   		}
+   		.jumbotron{ 
+   			background-color: #4682B4;
+   		}
+   		.row{ 
+   			margin:auto auto;
+   		}
+   </style>
+   <script type="text/javascript">
     		function test(){
     		//alert("onclick");
 			$.ajax({
@@ -28,6 +38,7 @@
 				url: "${CTX}/user/login",
 				data: $("#myform").serialize(),
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("error");
 					 alert("XMLHttpRequest.status: "+XMLHttpRequest.status);
 					 alert("XMLHttpRequest.readyState: "+XMLHttpRequest.readyState);
 					 alert("textStatus: "+textStatus);
@@ -38,52 +49,44 @@
 					if(data.code == 0){
 						$("password").focus();
 						$("#common").html("username or password incorrect");
-					}else if(data.code == 1){
-						//alert("login succeed");
-						$("#common").html("login succeed");
-						if(data.name == "admin"){
-							window.location = "${CTX}/user";
-						}else{
-							window.location = "${CTX}/user/detail";
-						}
 					}else{
-						$("#common").html("error code:"+data.code+";"+data.message);
+						$("#common").html("login succeed");
+						window.location = "${CTX}/admin";
 					}
 				}
 			});
     	}
     	
-    	//}
-    	
     </script>
 </head>
 <body>
-  <div class=headder>
-  			<h1><a href="/">首页</a></h1>
-  </div>
-  
-  <div class="form">
-  	<h2>Login</h2>
-  	<form id="myform">
-  		<label>Name:</label>
-  		<div>
-  			<input id="loginName" name="loginName" type="text">
-  		</div>
-  		<label>Password</label>
-  		<div>
-  			<input id="password" name="password" type="password">
-  		</div>
-  		<div>
-  			<!-- 
-  			<button type="submit">登陆</button>
-  			 -->
-  			 <input id="btn" type="button" value="登陆"  onclick="javascript:test();"/>
-  			 <input type="reset" value="重置" />
-  		</div>
-  	</form>
-  	<div id="common"></div>
-  </div>
+  <div class="container">
+  	<!--巨幕-->
+	<div class="jumbotron">
+	  <h1><strong>质控后台管理系统</strong></h1>
+	</div>
+	<!--流式布局-->
+	<!-- Stack the columns on mobile by making one full-width and the other half-width -->
+	<div class="row">
+	  <div class="col-md-3"></div>
+	  <div class="col-md-6">
+		<!-- 表单 -->
+		<form id="myform">
+		  <div class="form-group">
+		    <label for="exampleInputName">User</label>
+		    <input type="text" class="form-control" id="loginName" name="loginName" placeholder="User">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Password</label>
+		    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+		  </div>
+		  
+		  <button type="submit" class="btn btn-primary btn-block" onclick="javascript:test()">Submit</button>
+		</form>
+	  </div>
+	  <div class="col-md-3"></div>
+	</div>
 
-
+  </div>
 </body>
 </html>

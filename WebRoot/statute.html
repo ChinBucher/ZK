@@ -1,15 +1,25 @@
+<!-- 根据数据添加要求所修改的模板 from 1 -->
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>四川省放射医学质控中心</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-<link href="css/style.css" rel="stylesheet" type="text/css"  media="all" />
-<link rel="stylesheet" href="css/responsiveslides.css">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="四川省放射医学质控中心,远程读片,远程培训" />
-<script src="js/jquery.min.js"> </script>
-<script src="js/responsiveslides.min.js"></script>
+
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<link href="${CTX}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="${CTX}/css/style.css" rel="stylesheet" type="text/css"  media="all" />
+<link href="${CTX}/css/responsiveslides.css" rel="stylesheet" >
+
+<script src="${CTX}/js/jquery.min.js"> </script>
+<script src="${CTX}/js/responsiveslides.min.js"></script>
 <script>
 		    // You can also use "$(window).load(function() {"
 			    $(function () {
@@ -24,9 +34,9 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script src="${CTX}/js/bootstrap.js"></script>
+<script type="text/javascript" src="${CTX}/js/move-top.js"></script>
+<script type="text/javascript" src="${CTX}/js/easing.js"></script>
 <!--/script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -46,7 +56,7 @@
     <div class="main-header">
       <div class="clearfix"> </div>
       <div class="top-header">
-        <div class="logo"> <a href="index.html"><img src="images/logo.jpg" title="logo" /></a> </div>
+        <div class="logo"> <a href="${CTX}//"><img src="${CTX}/images/logo.jpg" title="logo" /></a> </div>
         <div class="top-header-right">
           <ul class="support">
             <li><span><i class="tele-in"> </i>+86 028-8555-3329</span></li>
@@ -68,16 +78,16 @@
             <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li><a href="index.html">首页</a></li>
-                <li><a href="about.html">省中心</a></li>
-                <li><a href="subject.html">分中心</a></li>
-                <li><a href="services.html">专家团队</a></li>
-                <li class="active"><a href="statute.html">政策法规</a></li>
-                <li><a href="active.html">质控活动</a></li>
-                <li><a href="news.html">行业新闻</a></li>
+                <li><a href="${CTX}/about">省中心</a></li>
+                <li><a href="${CTX}/subject">分中心</a></li>
+                <li><a href="${CTX}/services">专家团队</a></li>
+                <li class="active"><a href="${CTX}/statute">政策法规</a></li>
+                <li><a href="${CTX}/active">质控活动</a></li>
+                <li><a href="${CTX}/news">行业新闻</a></li>
               </ul>
               <div class="search">
-                <form>
-                  <input type="search" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" required="">
+                <form id="myform" action="${CTX}/statute/search" method="post" >
+                  <input type="search" name="search" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" required="">
                   <input type="submit" value=" ">
                 </form>
               </div>
@@ -100,138 +110,59 @@
   </div>
   <!--End-main-header--> 
 </div>
-<!--End-header->
+<!--End-header-->
 		<!--start-content-->
 		<div class="content">
 			<div class="container">
 				<!--start-blog-->
 				<div class="blog-header">
-				  <ol class="breadcrumb">
-      <li><a href="index.html">四川省放射医学质控中心</a></li>
+					<ol class="breadcrumb">
+				      <li><a href="${CTX}/">四川省放射医学质控中心</a></li>
 					  <li class="active">政策法规</li>						  
-				    </ol>
+			    	</ol>
 			    </div>
+
+			    <!-- #重复部分 文章内容 -->
 				<div class="blog-leftgrids">
+
+				  <#list statPage.getList() as x>
 				  <div class="who_are">
-				    <h3><a href="single.html">放射工作人员健康管理规定</a></h3>
-				    <p>第一章　总则
-						      　　<br>
-				      第一条　为保障放射工作人员的健康与安全，全面评价放射工作人员胜任本职工作的健康状况，制定本规定。
-				      　
-				      　<br>
-				      第二条　本规定适用于所有放射工作单位和放射工作人员。 　
-				      　<br>
-				      第三条　本规定由各省、自治区、直辖市卫生厅、局负责组织实施。 <br>
-				      第二章　常规医学监督
-				      　
-				      　<br>
-				      第四条　放射工作人员就业前必须进行体格检查，体检合格者方可从事放射工作。
-				      　
-				      　<br>
-				      第五条　放射工作人员就业后必须进行定期体格检查。对在甲种和乙种工作条件下工作的放射工作人员每年体检1次；对在丙种工作条件下工作的放射工作人员每2-3年体检1次；必要时可增加体检次数。就业前、后体检结果由体检单位详细如实地记录在个人健康档案中。
-				      　
-				      　<br>
-				      第六条　放射工作单位对每位放射工作人员必须建立个人健康档案和个人剂量档案。 </p>
+				    <h3><a href="${CTX}/statute/detail/${x.id}">${x.title}</a></h3>
+				    <p>${x.content}</p>
 		          </div>
 				  <div class="artical-links">
 				    <ul>
-				      <li><img src="images/blog-icon1.png" title="date"><span>1988年4月20日卫生部发布</span></li>
-				      <li><a href="#"><img src="images/blog-icon4.png" title="Lables"><span>查看次数</span></a></li>
-				      <li><a href="#"><img src="images/blog-icon5.png" title="permalink"><span>下载文档</span></a></li>
+				      <li><img src="${CTX}/images/blog-icon1.png" title="date"><span>${x.datec}</span></li>
+				      <li><a><img src="${CTX}/images/blog-icon4.png" title="Lables"><span>查看次数：${x.count}</span></a></li>
+				      <li id="down"><a href="${CTX}/statute/download/${x.id}"><img src="${CTX}/images/blog-icon5.png" title="permalink"><span>下载文档</span></a></li>
+              ${(alertMsg)!}
 		            </ul>
 		          </div>
-				  <div class="who_are">
-				    <h3><a href="single.html">原发性肺癌诊疗规范（2011年版）</a></h3>
-				    <p>一、概述<br>
-				      原发性肺癌（以下简称肺癌）是我国最常见的恶性肿瘤之一。2010年卫生统计年鉴显示，2005年，肺癌死亡率占我国恶性肿瘤死亡率的第1位。<br>
-				      为进一步规范我国肺癌诊疗行为，提高医疗机构肺癌诊疗水平，改善肺癌患者预后，保障医疗质量和医疗安全，特制定本规范。<br>
-				      二、诊断技术与应用<br>
-				      （一）高危因素。有吸烟史并且吸烟指数大于400支/年、高危职业接触史(如接触石棉)以及肺癌家族史等，年龄在45岁以上者，是肺癌的高危人群。<br>
-				      （二） 临床表现。<br>
-				      1.肺癌早期可无明显症状。当病情发展到一定程度时，常出现以下症状：<br>
-				      （1）刺激性干咳。<br>
-		            （2）痰中带血或血痰。</p>
-		          </div>
-				  <div class="artical-links">
-				    <ul>
-				      <li><img src="images/blog-icon1.png" title="date"><span>2011年版</span></li>
-				      <li><a href="#"><img src="images/blog-icon4.png" title="Lables"><span>查看更多</span></a></li>
-				      <li><a href="#"><img src="images/blog-icon5.png" title="permalink"><span>下载文档</span></a></li>
-		            </ul>
-		          </div>
-				  <div class="who_are">
-				    <h3><a href="single.html">胰腺癌诊疗规范（2011年版）</a></h3>
-				    <p>一、概述<br>
-				      胰腺癌（cancer of pancreas）是常见的胰腺肿瘤，恶性程度极高，近年来，发病率在国内外均呈明显的上升趋势。胰腺癌半数以上位于胰头，约90%是起源于腺管上皮的管腺癌。<br>
-				      为进一步规范我国胰腺癌诊疗行为，提高医疗机构胰腺癌诊疗水平，改善胰腺癌患者预后，保障医疗质量和医疗安全，特制定本规范。<br>
-				      二、诊断技术与应用<br>
-				      （一）高危因素。老年，有吸烟史，高脂饮食，体重指数超标为胰腺癌的危险因素，暴露于β-萘胺、联苯胺等化学物质可导致发病率增加。<br>
-				      （二）临床表现。<br>
-				      1.多数胰腺癌患者缺乏特异性症状，最初仅表现为上腹部不适，隐痛，易与其他消化系统疾病混淆。当患者出现腰背部疼痛为肿瘤侵犯腹膜后神经丛，为晚期表现。<br>
-				      2.80-90%胰腺癌患者在疾病初期即有消瘦、体重减轻。<br>
-		            3.常出现消化不良、呕吐、腹泻等症状。</p>
-		          </div>
-				  <div class="artical-links">
-				    <ul>
-				      <li><img src="images/blog-icon1.png" title="date"><span>2011年版</span></li>
-				      <li><a href="#"><img src="images/blog-icon4.png" title="Lables"><span>查看更多</span></a></li>
-				      <li><a href="#"><img src="images/blog-icon5.png" title="permalink"><span>下载文档</span></a></li>
-		            </ul>
-		          </div>
-				  <div class="who_are">
-				    <h3><a href="single.html">放射工作人员健康管理规定</a></h3>
-				    <p>第一章　总则
-						      　　<br>
-				      第一条　为保障放射工作人员的健康与安全，全面评价放射工作人员胜任本职工作的健康状况，制定本规定。
-				      　
-				      　<br>
-				      第二条　本规定适用于所有放射工作单位和放射工作人员。 　
-				      　<br>
-				      第三条　本规定由各省、自治区、直辖市卫生厅、局负责组织实施。 <br>
-				      第二章　常规医学监督
-				      　
-				      　<br>
-				      第四条　放射工作人员就业前必须进行体格检查，体检合格者方可从事放射工作。
-				      　
-				      　<br>
-				      第五条　放射工作人员就业后必须进行定期体格检查。对在甲种和乙种工作条件下工作的放射工作人员每年体检1次；对在丙种工作条件下工作的放射工作人员每2-3年体检1次；必要时可增加体检次数。就业前、后体检结果由体检单位详细如实地记录在个人健康档案中。
-				      　
-				      　<br>
-				      第六条　放射工作单位对每位放射工作人员必须建立个人健康档案和个人剂量档案。 </p>
-		          </div>
-				  <div class="artical-links">
-  						 	<ul>
-  						 		<li><img src="images/blog-icon1.png" title="date"><span>1988年4月20日卫生部发布</span></li>
-  						 		<li><a href="#"><img src="images/blog-icon4.png" title="Lables"><span>查看更多</span></a></li>
-  						 		<li><a href="#"><img src="images/blog-icon5.png" title="permalink"><span>下载文档</span></a></li>
-					 	    </ul>
-  						 </div>
-					</div>
-					<div class="blog-leftgrids"></div>
-					<div class="blog-leftgrids"></div>
-					<div class="projects-pagnation">
-					  <ul>
-						  <li><a href="#">1</a></li>
-						  <li><a href="#">2</a></li>
-						  <li><a href="#">3</a></li>
-						  <li><a href="#">Next</a></li>
-					  </ul>
-			    </div>
+				  </#list>
+				  <#include "/common/_paginate.html" />
+				  <div class="projects-pagnation">
+				  <@paginate currentPage=statPage.pageNumber totalPage=statPage.totalPage actionUrl="${CTX}/statute" />
+				  </div>
+				  
+				</div>
+
 				<div class="clear"> </div>
 				<!--End-blog-->
 			</div>
 		</div>
-		<div class="footer">
+
+<!-- #footer -->
+<div class="footer">
   <div class="container">
     <div class="col-md-3 ftr_navi ftr">
       <h3>网站导航</h3>
       <ul>
-        <li><a href="about.html">省中心</a></li>
-        <li><a href="subject.html">分中心</a></li>
-        <li><a href="services.html">专家团队</a></li>
-        <li><a href="statute.html">政策法规</a></li>
-        <li><a href="active.html">质控活动</a></li>
-        <li><a href="news.html">行业新闻</a></li>
+        <li><a href="${CTX}/about">省中心</a></li>
+        <li><a href="${CTX}/subject">分中心</a></li>
+        <li><a href="${CTX}/services">专家团队</a></li>
+        <li><a href="${CTX}/statute">政策法规</a></li>
+        <li><a href="${CTX}/active">质控活动</a></li>
+        <li><a href="${CTX}/news">行业新闻</a></li>
       </ul>
     </div>
     <div class="col-md-3 ftr_navi ftr">

@@ -1,3 +1,6 @@
+/**
+ * BaseModel demo
+ */
 package basemodel;
 
 import java.util.Date;

@@ -1,3 +1,6 @@
+/**
+ * 验证器 demo
+ */
 package validator;
 
 import model.Source;

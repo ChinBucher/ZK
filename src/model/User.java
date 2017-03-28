@@ -1,3 +1,8 @@
+/**
+ * 用户model
+ * 关于 用户表的操作 sql
+ * 暂时仅对管理员开放
+ */
 package model;
 
 import basemodel.BaseUser;

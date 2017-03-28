@@ -1,3 +1,6 @@
+/**
+ * demo 暂未用
+ */
 package interceptor;
 
 import model.User;
@@ -12,10 +15,14 @@ public class UserInterceptor implements Interceptor{
 		// TODO Auto-generated method stub
 		Controller controller = inv.getController();
 		User loginUser = controller.getSessionAttr("loginUser");
+		
+		inv.invoke();
+		
 		if(loginUser != null ){
-			inv.invoke();
+			System.out.println("UserInterceptor_user not null");
+			controller.redirect("/admin");
 		}else{
-			controller.redirect("/src");
+			System.out.println("UserInterceptor_user null");
 		}
 	}
 

@@ -1,4 +1,4 @@
-jdbcUrl = jdbc:mysql://localhost/hx
+jdbcUrl = jdbc:mysql://localhost/hx?characterEncoding=utf8
 user = root
 password = 
 devMode = true

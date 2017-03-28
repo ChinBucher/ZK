@@ -5,13 +5,12 @@ import interceptor.downInterceptor;
 import java.io.File;
 import java.util.List;
 
+import model.Source;
+
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PathKit;
-import com.jfinal.kit.PropKit;
 import com.jfinal.upload.UploadFile;
-
-import model.Source;
 
 /**
  * BlogController
@@ -26,14 +25,14 @@ public class SourceController extends Controller {
 		/*
 		 * 1.html 中 涉及到文件的下载，下载按照传入参数 id 的条件下获取文件
 		 */
-		render("1.html");
+//		render("1.html");
 		/*
 		 * 2.html 中 涉及到图片的加载，以下是对图片资源的路径的获取
 		 */
-//		String p = "upload";
-//		setAttr("p", p);
-//		//path: E:\Eclipse-JavaEE-test\HX_System\WebRoot
-//		render("2.html");
+		String p = "upload";
+		setAttr("p", p);
+		//path: E:\Eclipse-JavaEE-test\HX_System\WebRoot
+		render("2.html");
 	}
 	
 	public void add() {

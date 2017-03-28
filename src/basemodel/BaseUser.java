@@ -1,3 +1,7 @@
+/**
+ * 用户系统
+ * 暂时仅对管理员开放
+ */
 package basemodel;
 
 import com.jfinal.plugin.activerecord.Model;

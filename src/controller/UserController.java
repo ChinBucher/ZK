@@ -1,7 +1,7 @@
 package controller;
 
-import validator.UserValidator;
 import model.User;
+import validator.UserValidator;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -10,7 +10,8 @@ import com.jfinal.plugin.activerecord.Db;
 public class UserController extends Controller{
 	public void index(){
 		setAttr("userPage", User.user.paginate(getParaToInt(0, 1), 10));
-		render("/user/admin.html");
+//		render("/user/admin.html");
+		render("/user/userList.html");
 	}
 	
 	//已有前端验证，暂不用@Before
@@ -36,6 +37,7 @@ public class UserController extends Controller{
 		renderJson();
 	}
 	
+//	验证用户是否登陆
 	public void login(){
 		String loginName = getPara("loginName");
 		String pwd = getPara("password");
