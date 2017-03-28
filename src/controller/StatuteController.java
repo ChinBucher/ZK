@@ -49,11 +49,22 @@ public class StatuteController extends Controller{
 	}
 	
 	//添加一个validator 验证信息是否有空缺
-//	@Before(SourceValidator.class)
 	public void upload(){
 		System.out.println("upload");
 		List<UploadFile> files = this.getFiles("./statute");
+/*
+ * ### for rename		
+ */
+/*
+		String basePath = PathKit.getWebRootPath(),
+				  folder = "\\upload\\statute",
+				  filename = getPara("name");
+*/
 		for(int i=0;i<files.size();i++){
+			//### for rename
+			//UploadFile file = files.get(i);
+			//file.getFile().renameTo(new File(basePath + folder + filename));
+			
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);
 			String uploadPath = files.get(i).getUploadPath();
