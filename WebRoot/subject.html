@@ -52,17 +52,6 @@
             <li><span><i class="tele-in"> </i>+86 028-8555-3329</span></li>
             <li><a href="mailto:info@example.com"><i> </i>info@yingtai360.com</a></li>
           </ul>
-          <!--<div class="top-header-contact-account">
-            <div class="social">
-              <ul>
-                <li><a href="#"><i class="facebook"> </i></a></li>
-                <li><a href="#"><i class="twitter"> </i></a></li>
-                <li><a href="#"><i class="dribble"> </i></a></li>
-                <li><a href="#"><i class="linkdin"> </i></a></li>
-                <li><a href="#"><i class="google"> </i></a></li>
-              </ul>
-            </div>
-          </div>-->
           <div class="clearfix"> </div>
         </div>
         <div class="clearfix"> </div>
@@ -113,6 +102,11 @@
 </div>	
 <!---End-header--->
 <!--start-about-->
+<style type="text/css">
+  /*a {color:blue}*/
+  a:active{color:red}
+  a:hover{color:yellow}
+</style>
 <div class="container">
   <!---start-projects---->
   <div class="projects-header">
@@ -126,10 +120,12 @@
   <!-- ####################### -->
   <#list sbcPage.getList() as x>
     <div class="col-md-4 gallery-grid" style="padding: 10px;"> 
-      <a class="fancybox" href="${CTX}/subject/detail/${x.id}" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+      <a class="fancybox" href="${CTX}/subject/detail/${x.id}" data-fancybox-group="gallery" title="${x.name}">
         <img src="${CTX}/upload/${x.picpath}" class="img-style row6" alt=""><span> </span>
       </a>
-      <p>${x.name}</p>
+      <a href="${CTX}/subject/detail/${x.id}"> <!-- style="text-decoration:none;" -->
+        <p>${x.name}</p>
+      </a>
     </div>
   </#list>
     <!-- #################### -->

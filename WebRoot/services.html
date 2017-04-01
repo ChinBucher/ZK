@@ -52,17 +52,6 @@
             <li><span><i class="tele-in"> </i>+86 028-8555-3329</span></li>
             <li><a href="mailto:info@example.com"><i> </i>info@yingtai360.com</a></li>
           </ul>
-          <!--<div class="top-header-contact-account">
-            <div class="social">
-              <ul>
-                <li><a href="#"><i class="facebook"> </i></a></li>
-                <li><a href="#"><i class="twitter"> </i></a></li>
-                <li><a href="#"><i class="dribble"> </i></a></li>
-                <li><a href="#"><i class="linkdin"> </i></a></li>
-                <li><a href="#"><i class="google"> </i></a></li>
-              </ul>
-            </div>
-          </div>-->
           <div class="clearfix"> </div>
         </div>
         <div class="clearfix"> </div>
@@ -131,7 +120,7 @@
 		  </div>
 	  </div>
   </div>	 
-<!------->
+<!---->
 <div class="who_are">
     <div class="container">			
       <h3>团队荣誉</h3>
@@ -149,65 +138,29 @@
     </div>
 </div>
 <!---->
-
+<style type="text/css">
+  .team-grid{
+    padding: 1%;
+  }
+  .team-grid img{
+    width: 100%;
+  }
+</style>
 <div class="team-work">
   <div class="container">
 	 <h3 class="team">团队成员</h3>
 	 <div class="team-grids">
-	   <div class="col-md-3 team-grid">
-       <img src="${CTX}/images/b1.png" alt=""/>
-     <h3><a href="single.html">程南生</a></h3>
-       <p>四川大学华西医院副院长<br>
-       中国医师协会医学<br>
-       教育学组委员<br>
-       多个医学杂志编委<br>
-       中华医学会外科学会胆道外科学组委员
-</p>
+   <#list doctorPage.getList() as x>
+     <div class="col-md-3 team-grid">
+       <!-- <img src="${CTX}/upload/${x.picpath}" alt=""  width="350px"  height="450px"/> -->
+       <a href="${CTX}/services/detail/${x.id}">
+         <img src="${CTX}/upload/${x.picpath}" title="${x.title}" alt="${x.name}" />
+       </a>
+       <h3 style="margin-top: 0;"><a href="${CTX}/services/detail/${x.id}">${x.name}</a></h3>
+       <p>${x.titlec}</p>
      </div>
+   </#list>
 
-	   <div class="col-md-3 team-grid">
-       <img src="${CTX}/images/b2.png" alt=""/>
-     <h3><a href="single.html">宋彬</a></h3>
-       <p>
-       四川大学华西医院放射科教授、博导<br>
-       <!--四川大学华西医院放射科主任暨医学影像中心主任<br>  -->
-       中国医师协会放射医师分会副会长<br>
-       <!--  中华放射学会常委、中华放射学会腹部学组组长<br>  -->
-       四川省医学会放射专业委员会主任委员<br>
-       四川省医师协会放射医师分会前任主任委员<br>
-       四川省卫计委放射医学质量控制中心主任<br>
-       <!--  中国医师协会基层医师继续教育华西学院副院长<br>  -->
-       </p>
-     </div>
-
-
-	   <div class="col-md-3 team-grid">
-       <img src="${CTX}/images/b3.png" alt=""/>
-     <h3><a href="single.html">张小明</a></h3>
-       <p>
-      川北医学院放射科主任，医院党委书记<br>
-      国际核磁共振学会（ISMRI）会员<br>
-      四川省放射医师学会主任委员<br>
-      四川省卫生厅学术技术带头人<br>
-      中华医学会四川省分会放射专委会候任主任委员<br>
-      
-       </p>
-     </div>
-
-     
-	   <div class="col-md-3 team-grid">
-       <img src="${CTX}/images/b4.png" alt=""/>
-     <h3><a href="single.html">张真林</a></h3>
-       <p>
-       硕士、硕导，主任技师<br>
-       四川大学华西医院放射科副主任<br>
-       中华医学会影像技术分会副主任委员<br>
-       四川省医学会影像技术专委会主任委员<br>
-       四川省放射医学质控中心副主任<br>
-       <!--  四川省有突出贡献的优秀专家<br>  -->
-       四川省卫计委学术技术带头人<br>
-       </p>
-     </div>
 		 <div class="clearfix"></div>
      </div>
      <div style="float:right;margin-top: -1.5em;margin-right:1.5em;" class="gallery-button"><a href="${CTX}/services/doctor"><h3>查看更多</h3></a></div>

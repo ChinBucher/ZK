@@ -14,6 +14,7 @@ import com.jfinal.upload.UploadFile;
 
 public class ServicesController extends Controller{
 	public void index(){
+		setAttr("doctorPage", Doctor.doctor.paginate(getParaToInt(0, 1), 4));
 		render("/services.html");
 	}
 	
@@ -56,8 +57,8 @@ public class ServicesController extends Controller{
 //		截取内容显示
 		String title = s.getTitle();
 		String titlec;
-		if(title.length() > 100){
-			titlec = title.substring(0, 100) + "...";
+		if(title.length() > 50){
+			titlec = title.substring(0, 50) + "...";
 		}else{
 			titlec = title.substring(0, title.length()) + "...";
 		}
