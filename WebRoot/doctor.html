@@ -126,23 +126,31 @@
 <div class="team-work">
   <div class="container">
    <h3 class="team">团队成员</h3>
-   <div class="team-grids">
-<!-- ############## -->
+   <!-- <div class="team-grids">
   <#list doctorPage.getList() as x>
      <div class="col-md-3 team-grid">
-       <!-- <img src="${CTX}/upload/${x.picpath}" alt=""  width="350px"  height="450px"/> -->
        <a href="${CTX}/services/detail/${x.id}">
-         <img src="${CTX}/upload/${x.picpath}" title="${x.title}" alt="${x.name}" />
+         <img src="${CTX}/upload/${x.picpath}" title="${x.name}" alt="${x.name}" />
        </a>
        <h3 style="margin-top: 0;"><a href="${CTX}/services/detail/${x.id}">${x.name}</a></h3>
        <p>${x.titlec}</p>
      </div>
   </#list>
-     <!-- ###############3 -->
-  
-
      <div class="clearfix"></div>
+   </div> -->
+   <#list doctorPage.getList() as x>
+   <div class="team-grids">
+     <div class="col-md-3 team-grid">
+       <a href="${CTX}/services/detail/${x.id}">
+         <img src="${CTX}/upload/${x.picpath}" title="${x.name}" alt="${x.name}" />
+       </a>
+       <h3 style="margin-top: 0;"><a href="${CTX}/services/detail/${x.id}">${x.name}</a></h3>
+       <p>${x.titlec}</p>
      </div>
+   </div>
+   </#list>
+     <div class="clearfix"></div>
+   
       <#include "/common/_paginate.html" />
       <div class="projects-pagnation" style="margin:1em 0.5em;">
       <@paginate currentPage=doctorPage.pageNumber totalPage=doctorPage.totalPage actionUrl="${CTX}/services/doctor" />

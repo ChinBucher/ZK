@@ -92,7 +92,7 @@ public class NewsController extends Controller{
 		News s = News.news.findById(getParaToInt());
 		String content = s.getContent();
 		System.out.println(content);
-		content = content.replace("<br>","\n");
+		content = content.replace("<br>","\n"); //old, new
 		System.out.println(content);
 		s.setContent(content);
 		s.update();
