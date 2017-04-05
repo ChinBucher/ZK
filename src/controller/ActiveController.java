@@ -51,7 +51,7 @@ public class ActiveController extends Controller{
 	//添加一个validator 验证信息是否有空缺
 	public void upload(){
 		System.out.println("upload");
-		List<UploadFile> files = this.getFiles();
+		List<UploadFile> files = this.getFiles("./active");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);
@@ -107,7 +107,7 @@ public class ActiveController extends Controller{
 	@Before(AuthInterceptor.class)
 	public void update() {
 		System.out.println("update");
-		List<UploadFile> files = this.getFiles();
+		List<UploadFile> files = this.getFiles("./active");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);
@@ -169,7 +169,7 @@ public class ActiveController extends Controller{
 			String docpath = Active.act.docPath(id);
 			
 			if(docpath.length() != 1){
-				String path = PathKit.getWebRootPath() + "\\upload";
+				String path = PathKit.getWebRootPath() + "\\upload\\active";
 				System.out.println("path: " + path);
 				File file = new File(path + "\\" + docpath);
 				if(file.isFile()){

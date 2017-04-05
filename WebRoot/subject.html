@@ -121,7 +121,7 @@
   <#list sbcPage.getList() as x>
     <div class="col-md-4 gallery-grid" style="padding: 10px;"> 
       <a class="fancybox" href="${CTX}/subject/detail/${x.id}" data-fancybox-group="gallery" title="${x.name}">
-        <img src="${CTX}/upload/${x.picpath}" class="img-style row6" alt=""><span> </span>
+        <img src="${CTX}/upload/subject/${x.picpath}" class="img-style row6" alt=""><span> </span>
       </a>
       <a href="${CTX}/subject/detail/${x.id}"> <!-- style="text-decoration:none;" -->
         <p>${x.name}</p>

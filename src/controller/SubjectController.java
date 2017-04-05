@@ -49,7 +49,7 @@ public class SubjectController extends Controller{
 	
 	public void upload(){
 		System.out.println("upload");
-		List<UploadFile> files = this.getFiles();
+		List<UploadFile> files = this.getFiles("./subject");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);
@@ -91,7 +91,7 @@ public class SubjectController extends Controller{
 	@Before(AuthInterceptor.class)
 	public void update() {
 		System.out.println("upload");
-		List<UploadFile> files = this.getFiles();
+		List<UploadFile> files = this.getFiles("./subject");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);

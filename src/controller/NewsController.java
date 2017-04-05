@@ -51,7 +51,7 @@ public class NewsController extends Controller{
 	//添加一个validator 验证信息是否有空缺
 	public void upload(){
 		System.out.println("upload");
-		List<UploadFile> files = this.getFiles();
+		List<UploadFile> files = this.getFiles("./news");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);
@@ -62,6 +62,7 @@ public class NewsController extends Controller{
 		}
 		News s = getModel(News.class);
 		s.save();
+		
 //		截取内容显示
 		String content = s.getContent();
 		String cont;
@@ -119,8 +120,8 @@ public class NewsController extends Controller{
 		News st = getModel(News.class);
 		System.out.println("st: " + st);
 		
-		System.out.println("upload");
-		List<UploadFile> files = this.getFiles();
+		System.out.println("update");
+		List<UploadFile> files = this.getFiles("./news");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);
@@ -183,7 +184,7 @@ public class NewsController extends Controller{
 			String docpath = News.news.docPath(id);
 			
 			if(docpath.length() != 1){
-				String path = PathKit.getWebRootPath() + "\\upload";
+				String path = PathKit.getWebRootPath() + "\\upload\\news";
 				System.out.println("path: " + path);
 				File file = new File(path + "\\" + docpath);
 				if(file.isFile()){

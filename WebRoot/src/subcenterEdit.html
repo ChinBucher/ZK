@@ -1,6 +1,19 @@
 <#include "/common/_layout.html" />
 <@layout>
 <script type="text/javascript">
+/*
+ 用途：检查输入字符串是否为空或者全部都是空格
+ 输入：str
+ 返回：
+ 如果全是空返回true,否则返回false
+ */
+function isNull( str ){
+    if ( str == "" ) return true;
+    var regu = "^[ ]+$";
+    var re = new RegExp(regu);
+    return re.test(str);
+}
+
 $(document).ready(function(){
 	console.log("############");
 	//获取初始值
@@ -39,6 +52,19 @@ $(document).ready(function(){
 		console.log("epic_length_edit: " + epic.length);
 		$("#pic")[0].value = epic;
 		console.log("value: " + $("#pic")[0].value);
+
+		// preventDefault
+  		// return false;
+  		var title = $("input[name = 'subcenter.name']")[0].value,
+  			content = $("textarea[name = 'content']")[0].value;
+  			if(isNull(title)){
+  				alert("标题不能为空!");
+  				return false;
+  			}
+  			if(isNull(content)){
+  				alert("内容不能为空!");
+  				return false;
+  			}
 		});
 });
 </script>

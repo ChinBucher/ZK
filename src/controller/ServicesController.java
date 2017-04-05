@@ -43,7 +43,7 @@ public class ServicesController extends Controller{
 	//添加一个validator 验证信息是否有空缺
 	public void upload(){
 		System.out.println("upload");
-		List<UploadFile> files = this.getFiles();
+		List<UploadFile> files = this.getFiles("./services");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);
@@ -106,7 +106,7 @@ public class ServicesController extends Controller{
 	@Before(AuthInterceptor.class)
 	public void update() {
 		System.out.println("update");
-		List<UploadFile> files = this.getFiles();
+		List<UploadFile> files = this.getFiles("./services");
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
 			System.out.println("filename: " + fileName);

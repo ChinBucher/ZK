@@ -1,6 +1,19 @@
 <#include "/common/_layout.html" />
 <@layout>
 <script type="text/javascript">
+/*
+ 用途：检查输入字符串是否为空或者全部都是空格
+ 输入：str
+ 返回：
+ 如果全是空返回true,否则返回false
+ */
+function isNull( str ){
+    if ( str == "" ) return true;
+    var regu = "^[ ]+$";
+    var re = new RegExp(regu);
+    return re.test(str);
+}
+
 $(document).ready(function(){
 	//获取初始值
 	var sdoc = $("#doc")[0].value,
@@ -47,13 +60,26 @@ $(document).ready(function(){
 		$("#doc")[0].value = edoc;
 		$("#pic")[0].value = epic;
 		//更新文件名
+		//
+		// preventDefault
+  		// return false;
+  		var title = $("input[name = 'active.title']")[0].value,
+  			content = $("textarea[name = 'content']")[0].value;
+  			if(isNull(title)){
+  				alert("标题不能为空!");
+  				return false;
+  			}
+  			if(isNull(content)){
+  				alert("内容不能为空!");
+  				return false;
+  			}
 		});
 });
 </script>
 <div class="form_box">
 	<form action="${CTX}/active/update" method="post" enctype="multipart/form-data">
 		<fieldset class="solid">
-			<legend><h1>新闻管理&nbsp;<small>修改</small></h1></legend>
+			<legend><h1>活动管理&nbsp;<small>修改</small></h1></legend>
 			<input type="hidden" name="active.id" value="${(active.id)!}" />
 			<input type="hidden" name="active.author" value="${(active.author)!}" />
 			<input type="hidden" name="active.author_id" value="${(active.author_id)!}" />
@@ -65,9 +91,9 @@ $(document).ready(function(){
 			<div>
 				<label>标题：</label>
 				<input type="text" name="active.title" value="${(active.title)!}" />${titleMsg!}
-				&nbsp;&nbsp;
+				<!-- &nbsp;&nbsp;
 				<label>政策发布日期：</label>
-				<input type="text" name="active.datec" value="${(active.type)!}" />${typeMsg!}
+				<input type="text" name="active.datec" value="${(active.type)!}" />${typeMsg!} -->
 			</div>
 			<div>
 				<label style="vertical-align: top">内容：</label>
@@ -88,44 +114,6 @@ $(document).ready(function(){
 	</form>
 </div>
 
-<!-- <h1>资源管理 ---&gt; 修改
-</h1>
-<div class="form_box">
-	<form action="/active/update" method="post" enctype="multipart/form-data">
-		<fieldset class="solid">
-			<legend>资源</legend>
-			<input type="hidden" name="active.id" value="${(active.id)!}" />
-			<input type="hidden" name="active.author" value="${(active.author)!}" />
-			<input type="hidden" name="active.author_id" value="${(active.author_id)!}" />
-			<input type="hidden" name="active.day" value="${(active.day)!}" />
-			<input type="hidden" name="active.month" value="${(active.month)!}" />
-			<input type="hidden" name="active.count" value="${(active.count)!}" />
-			<input id="doc" type="hidden" name="active.docpath" value="${(active.docpath)!}" />
-			<input id="pic" type="hidden" name="active.picpath" value="${(active.picpath)!}" />
-			<div>
-				<label>标题</label>
-				<input type="text" name="active.title" value="${(active.title)!}" />${titleMsg!}
-				&nbsp;&nbsp;
-				<label>类别</label>
-				<input type="text" name="active.type" value="${(active.type)!}" />${typeMsg!}
-			</div>
-			<div>
-				<label>内容</label>
-				<textarea id="cont" name="active.content" cols="80" rows="10">${(active.content)!}</textarea>${contentMsg!}
-			</div>
-			<br>
-			<div>
-				<label>文件上传：</label>
-				<input type="file" id="docfile" name="active.docpath"></input>
-				<label>图片上传：</label>
-				<input type="file" id="picfile" name="active.picpath"></input>
-				<label>&nbsp;</label>
-				<br>
-				<input id="sub" value="提交" type="submit">
-			</div>
-		</fieldset>
-	</form>
-</div> -->
 </@layout>
 
 
