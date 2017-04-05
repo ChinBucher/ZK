@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import validator.SourceValidator;
 import model.Active;
 import model.News;
 import model.Statute;
@@ -48,6 +49,7 @@ public class StatuteController extends Controller{
 	}
 	
 	//添加一个validator 验证信息是否有空缺
+//	@Before(SourceValidator.class)
 	public void upload(){
 		System.out.println("upload");
 		List<UploadFile> files = this.getFiles();
@@ -62,19 +64,23 @@ public class StatuteController extends Controller{
 		Statute s = getModel(Statute.class);
 		s.save();
 		
+//		截取内容显示
+		String content = s.getContent();
+		String cont;
+		if(content.length() > 100){
+			cont = content.substring(0, 100) + "...";
+		}else{
+			cont = content.substring(0, content.length());
+		}
+		s.setCont(cont);
+		
+//		日期相关
 		Date currentDate = new Date(System.currentTimeMillis());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
 		String dateNowStr = sdf.format(currentDate);  
 		String[] sdate = dateNowStr.toString().split(" ");
 		s.setDate(sdate[0]);
 		s.update();
-		
-//		setContent
-//		String content = getPara("content");
-//		System.out.println(content);
-//		content = content.replace("\n", "<br>");
-//		System.out.println(content);
-//		s.setContent(content);
 		
 		System.out.println("s: " + s);
 		redirect("/statute/manage");
@@ -85,6 +91,7 @@ public class StatuteController extends Controller{
 		Statute s = Statute.stat.findById(getParaToInt());
 		System.out.println("edit-s: " + s);
 		
+		//edit.html 不显示<br>
 		String content = s.getContent();
 		System.out.println(content);
 		content = content.replace("<br>","\n");
@@ -92,13 +99,24 @@ public class StatuteController extends Controller{
 		s.setContent(content);
 		s.update();
 		
+//		更新cont
+		String contet = s.getContent();
+		String cont;
+		if(contet.length() > 260){
+			cont = contet.substring(0, 260) + "...";
+		}else{
+			cont = contet.substring(0, contet.length());
+		}
+		s.setCont(cont);
+		s.update();
+		
 		setAttr("statute", Statute.stat.findById(getParaToInt()));
 		render("/src/statuteEdit.html");
 	}
 	
-	@Before(AuthInterceptor.class)
+//	@Before(SourceValidator.class)
 	public void update() {
-		System.out.println("upload");
+		System.out.println("update");
 		List<UploadFile> files = this.getFiles();
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
@@ -109,13 +127,24 @@ public class StatuteController extends Controller{
 			System.out.println("文件下载路径："+path);
 		}
 		
-//		System.out.println("getPara(id): " + getPara("statute.id"));
 		Statute s = getModel(Statute.class);
 		System.out.println("s: " + s);
 		String docpath = getPara("statute.docpath"),
 				  picpath  = getPara("statute.picpath");
 		s.setDocPath(docpath);
 		s.setPicPath(picpath);
+		s.update();
+		
+//		截取内容设置
+		String content = s.getContent();
+		System.out.println("###contentStat2: " + content);
+		String cont;
+		if(content.length() > 260){
+			cont = content.substring(0, 260) + "...";
+		}else{
+			cont = content.substring(0, content.length());
+		}
+		s.setCont(cont);
 		s.update();
 		
 		redirect("/statute/manage");

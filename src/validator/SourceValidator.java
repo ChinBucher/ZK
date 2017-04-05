@@ -16,17 +16,21 @@ public class SourceValidator extends Validator{
 		c.keepModel(Source.class);
 		
 		String actionKey = getActionKey();
-		if(actionKey.equals("/src/up")){
-			c.render("add.html");
-		}else if(actionKey.equals("/src/update")){
-			c.render("srcList.html");
+		System.out.println("actionkey: " +actionKey);
+		if(actionKey.equals("/statute/upload")){
+			c.render("/src/statuteAdd.html");
+		}else if(actionKey.equals("/statute/update")){
+			c.render("/src/statuteEdit.html");
 		}
 	}
 
 	@Override
 	protected void validate(Controller c) {
 		// TODO Auto-generated method stub
-		validateRequiredString("src.title", "titleMsg", "请输入文章名");
+		validateRequiredString("statute.title", "titleMsg", "请输入标题");
+		validateRequiredString("statute.datec", "datecMsg", "请输入政策发布日期");
+		validateRequiredString("content", "contentMsg", "请输入政策内容");
 	}
+	
 
 }

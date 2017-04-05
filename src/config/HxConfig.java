@@ -34,7 +34,7 @@ public class HxConfig extends JFinalConfig {
 		//me.setEncoding(others);
 //		me.setBaseUploadPath(baseUploadPath);
 //		文件下载基础路径
-		me.setBaseDownloadPath("E:\\Eclipse-JavaEE-test\\HX_System\\WebRoot\\upload");
+//		me.setBaseDownloadPath("E:\\Eclipse-JavaEE-test\\HX_System\\WebRoot\\upload");
 	}
 	
 	public void configRoute(Routes me){

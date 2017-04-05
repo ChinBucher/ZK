@@ -1,6 +1,19 @@
 <#include "/common/_layout.html" />
 <@layout>
 <script type="text/javascript">
+/*
+ 用途：检查输入字符串是否为空或者全部都是空格
+ 输入：str
+ 返回：
+ 如果全是空返回true,否则返回false
+ */
+function isNull( str ){
+    if ( str == "" ) return true;
+    var regu = "^[ ]+$";
+    var re = new RegExp(regu);
+    return re.test(str);
+}
+
 $(document).ready(function(){
 	console.log("############");
 	//获取初始值
@@ -47,6 +60,25 @@ $(document).ready(function(){
 		
 		$("#doc")[0].value = edoc;
 		$("#pic")[0].value = epic;
+
+		// preventDefault
+  		// return false;
+  		var title = $("input[name = 'statute.title']")[0].value,
+  			content = $("textarea[name = 'content']")[0].value,
+  			datec = $("input[name = 'statute.datec']")[0].value;
+  			
+  			if(isNull(title)){
+  				alert("标题不能为空!");
+  				return false;
+  			}
+  			if(isNull(content)){
+  				alert("内容不能为空!");
+  				return false;
+  			}
+  			if(isNull(datec)){
+  				alert("法规发布日期不能为空!");
+  				return false;
+  			}
 		});
 });
 </script>
@@ -61,16 +93,19 @@ $(document).ready(function(){
 			<input type="hidden" name="statute.docpath" value="${(statute.docpath)!}" id="doc" />
 			<input type="hidden" name="statute.picpath" value="${(statute.picpath)!}" id="pic" />
 			<div>
-				<label>标题：</label>
-				<input type="text" name="statute.title" value="${(statute.title)!}" />${titleMsg!}&nbsp;&nbsp;
-				<!-- <br>
-				<label>日期：</label>
-				<input type="text" name="statute.datec" value="${(statute.datec)!}" />${datecMsg!} -->
+				<label>标题：</label><b>${titleMsg!}</b><br>
+				<input type="text" name="statute.title" value="${(statute.title)!}" />
 			</div>
+			<br>
 			<div>
-				<label style="vertical-align: top">内容：</label>
-				<textarea id="cont" name="content" cols="80" rows="10">${(statute.content)!}</textarea>${contentMsg!}
+				<label style="vertical-align: top">内容：</label><b>${contentMsg!}</b><br>
+				<textarea id="cont" name="content" cols="80" rows="10">${(statute.content)!}</textarea>
 				<textarea id="cont2" name="statute.content" cols="80" rows="10" style="display:none;"></textarea>
+			</div>
+			<br>
+			<div>
+				<label>政策发布日期：</label><b>${datecMsg!}</b><br>
+				<input type="text" name="statute.datec" value="${(statute.datec)!}" />
 			</div>
 			<br>
 			<div>
@@ -79,7 +114,6 @@ $(document).ready(function(){
 				<label style="display: none;">图片上传：</label>
 				<input style="display: none;" type="file" id="picfile" name="statute.picpath"><br>
 				<label>&nbsp;</label>
-				<br>
 				<input id="sub" value="提交" type="submit">
 			</div>
 		</fieldset>

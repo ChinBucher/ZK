@@ -100,5 +100,13 @@ public abstract class BaseStatute<M extends BaseStatute<M>> extends Model<M> imp
 		return get("count");
 	}
 	
+	public void setCont(java.lang.String cont) {
+		set("cont", cont);
+	}
+
+	public java.lang.String getCont() {
+		return get("cont");
+	}
+	
 }
 

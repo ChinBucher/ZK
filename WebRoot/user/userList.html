@@ -21,7 +21,7 @@
 				<th width="12%">pwd</th>
 				<th width="12%"> action</th>
 				<th width="5%">
-					<a href="/register">添加</a>
+					<a href="${CTX}/register">添加</a>
 				</th>
 			</tr>
 			
@@ -32,8 +32,8 @@
 				<td style="text-align:center;" >${x.name}</td>
 				<td style="text-align:center;" >${x.pwd}</td>
 				<td style="text-align:center">
-					<a id="del" href="/user/delete/${x.id}">删除</a>
-					<a id="mod" href="/user/edit/${x.id}">修改</a>
+					<a id="del" href="${CTX}/user/delete/${x.id}">删除</a>
+					<a id="mod" href="${CTX}/user/edit/${x.id}">修改</a>
 				</td>
 			</tr>
 			</#list>

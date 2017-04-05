@@ -62,6 +62,7 @@ public class NewsController extends Controller{
 		}
 		News s = getModel(News.class);
 		s.save();
+		
 //		截取内容显示
 		String content = s.getContent();
 		String cont;
@@ -92,7 +93,7 @@ public class NewsController extends Controller{
 		News s = News.news.findById(getParaToInt());
 		String content = s.getContent();
 		System.out.println(content);
-		content = content.replace("<br>","\n");
+		content = content.replace("<br>","\n"); //old, new
 		System.out.println(content);
 		s.setContent(content);
 		s.update();
@@ -119,7 +120,7 @@ public class NewsController extends Controller{
 		News st = getModel(News.class);
 		System.out.println("st: " + st);
 		
-		System.out.println("upload");
+		System.out.println("update");
 		List<UploadFile> files = this.getFiles();
 		for(int i=0;i<files.size();i++){
 			String fileName = files.get(i).getFileName();
