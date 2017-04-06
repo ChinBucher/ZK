@@ -10,6 +10,7 @@ import model.Doctor;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.PathKit;
 import com.jfinal.upload.UploadFile;
 
 public class ServicesController extends Controller{
@@ -44,15 +45,21 @@ public class ServicesController extends Controller{
 	public void upload(){
 		System.out.println("upload");
 		List<UploadFile> files = this.getFiles("./services");
-		for(int i=0;i<files.size();i++){
-			String fileName = files.get(i).getFileName();
-			System.out.println("filename: " + fileName);
-			String uploadPath = files.get(i).getUploadPath();
-			System.out.println("文件上传路径："+uploadPath);
-			String path = uploadPath + "\\" + fileName;
-			System.out.println("文件下载路径："+path);
-		}
+		
 		Doctor s = getModel(Doctor.class);
+		String basePath = PathKit.getWebRootPath(),
+				  folder = "\\upload\\statute",
+				  fname =  s.getPicPath();
+		String path = basePath + folder + fname;
+		String[] filename = new String[2];
+		System.out.println("路径："+path);
+		
+		for(int i=0;i<files.size();i++){
+			filename[i] = files.get(i).getFileName();
+		}
+		if(null != filename[1]){
+			s.setPicPath(filename[1]);
+		}
 		s.save();
 //		截取内容显示
 		String title = s.getTitle();
@@ -107,19 +114,21 @@ public class ServicesController extends Controller{
 	public void update() {
 		System.out.println("update");
 		List<UploadFile> files = this.getFiles("./services");
-		for(int i=0;i<files.size();i++){
-			String fileName = files.get(i).getFileName();
-			System.out.println("filename: " + fileName);
-			String uploadPath = files.get(i).getUploadPath();
-			System.out.println("文件上传路径："+uploadPath);
-			String path = uploadPath + "\\" + fileName;
-			System.out.println("文件下载路径："+path);
-		}
 		
 		Doctor s = getModel(Doctor.class);
-		System.out.println("s: " + s);
-		String  picpath  = getPara("doctor.picpath");
-		s.setPicPath(picpath);
+		String basePath = PathKit.getWebRootPath(),
+				  folder = "\\upload\\statute",
+				  fname =  s.getPicPath();
+		String path = basePath + folder + fname;
+		String[] filename = new String[2];
+		System.out.println("路径："+path);
+		
+		for(int i=0;i<files.size();i++){
+			filename[i] = files.get(i).getFileName();
+		}
+		if(null != filename[1]){
+			s.setPicPath(filename[1]);
+		}
 		s.update();
 
 //		截取内容设置

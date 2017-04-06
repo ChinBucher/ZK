@@ -13,6 +13,7 @@ import model.Subcenter;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.PathKit;
 import com.jfinal.upload.UploadFile;
 
 public class SubjectController extends Controller{
@@ -50,15 +51,21 @@ public class SubjectController extends Controller{
 	public void upload(){
 		System.out.println("upload");
 		List<UploadFile> files = this.getFiles("./subject");
-		for(int i=0;i<files.size();i++){
-			String fileName = files.get(i).getFileName();
-			System.out.println("filename: " + fileName);
-			String uploadPath = files.get(i).getUploadPath();
-			System.out.println("文件上传路径："+uploadPath);
-			String path = uploadPath + "\\" + fileName;
-			System.out.println("文件下载路径："+path);
-		}
+		
 		Subcenter s = getModel(Subcenter.class);
+		String basePath = PathKit.getWebRootPath(),
+				  folder = "\\upload\\statute",
+				  fname =  s.getPicPath();
+		String path = basePath + folder + fname;
+		String[] filename = new String[2];
+		System.out.println("路径："+path);
+		
+		for(int i=0;i<files.size();i++){
+			filename[i] = files.get(i).getFileName();
+		}
+		if(null != filename[1]){
+			s.setPicPath(filename[1]);
+		}
 		s.save();
 //		日期相关
 		Date currentDate = new Date(System.currentTimeMillis());
@@ -92,19 +99,21 @@ public class SubjectController extends Controller{
 	public void update() {
 		System.out.println("upload");
 		List<UploadFile> files = this.getFiles("./subject");
-		for(int i=0;i<files.size();i++){
-			String fileName = files.get(i).getFileName();
-			System.out.println("filename: " + fileName);
-			String uploadPath = files.get(i).getUploadPath();
-			System.out.println("文件上传路径："+uploadPath);
-			String path = uploadPath + "\\" + fileName;
-			System.out.println("文件下载路径："+path);
-		}
 		
 		Subcenter s = getModel(Subcenter.class);
-		System.out.println("s: " + s);
-		String  picpath  = getPara("subcenter.picpath");
-		s.setPicPath(picpath);
+		String basePath = PathKit.getWebRootPath(),
+				  folder = "\\upload\\statute",
+				  fname =  s.getPicPath();
+		String path = basePath + folder + fname;
+		String[] filename = new String[2];
+		System.out.println("路径："+path);
+		
+		for(int i=0;i<files.size();i++){
+			filename[i] = files.get(i).getFileName();
+		}
+		if(null != filename[1]){
+			s.setPicPath(filename[1]);
+		}
 		s.update();
 		
 //		日期设置
