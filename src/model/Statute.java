@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.io.File;
 import java.util.List;
 
 import basemodel.BaseStatute;
@@ -58,6 +59,22 @@ public class Statute extends BaseStatute<Statute> {
 		sList = Statute.stat.find(sql);
 		return sList;
 	}
+	
+	/** 
+	 * 删除单个文件 
+	 * @param   sPath    被删除文件的文件名 
+	 * @return 单个文件删除成功返回true，否则返回false 
+	 */  
+	public boolean deleteFile(String sPath) {  
+	    Boolean flag = false;  
+	    File file = new File(sPath);  
+	    // 路径为文件且不为空则进行删除  
+	    if (file.isFile() && file.exists()) {  
+	        file.delete();  
+	        flag = true;  
+	    }  
+	    return flag;  
+	} 
 	
 }
 

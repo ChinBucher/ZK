@@ -52,27 +52,24 @@ public class StatuteController extends Controller{
 	public void upload(){
 		System.out.println("upload");
 		List<UploadFile> files = this.getFiles("./statute");
-/*
- * ### for rename		
- */
-/*
+		
+		Statute s = getModel(Statute.class);
 		String basePath = PathKit.getWebRootPath(),
 				  folder = "\\upload\\statute",
-				  filename = getPara("name");
-*/
+				  fname =  s.getDocPath();
+		String path = basePath + folder + fname;
+		String[] filename = new String[2];
+		System.out.println("路径："+path);
+		
 		for(int i=0;i<files.size();i++){
-			//### for rename
-			//UploadFile file = files.get(i);
-			//file.getFile().renameTo(new File(basePath + folder + filename));
-			
-			String fileName = files.get(i).getFileName();
-			System.out.println("filename: " + fileName);
-			String uploadPath = files.get(i).getUploadPath();
-			System.out.println("文件上传路径："+uploadPath);
-			String path = uploadPath + "\\" + fileName;
-			System.out.println("文件下载路径："+path);
+			filename[i] = files.get(i).getFileName();
 		}
-		Statute s = getModel(Statute.class);
+		if(null !=filename[0]){
+			s.setDocPath(filename[0]);
+		}
+		if(null != filename[1]){
+			s.setPicPath(filename[1]);
+		}
 		s.save();
 		
 //		截取内容显示
@@ -129,21 +126,24 @@ public class StatuteController extends Controller{
 	public void update() {
 		System.out.println("update");
 		List<UploadFile> files = this.getFiles("./statute");
-		for(int i=0;i<files.size();i++){
-			String fileName = files.get(i).getFileName();
-			System.out.println("filename: " + fileName);
-			String uploadPath = files.get(i).getUploadPath();
-			System.out.println("文件上传路径："+uploadPath);
-			String path = uploadPath + "\\" + fileName;
-			System.out.println("文件下载路径："+path);
-		}
 		
 		Statute s = getModel(Statute.class);
-		System.out.println("s: " + s);
-		String docpath = getPara("statute.docpath"),
-				  picpath  = getPara("statute.picpath");
-		s.setDocPath(docpath);
-		s.setPicPath(picpath);
+		String basePath = PathKit.getWebRootPath(),
+				  folder = "\\upload\\statute",
+				  fname =  s.getDocPath();
+		String path = basePath + folder + fname;
+		String[] filename = new String[2];
+		System.out.println("路径："+path);
+		
+		for(int i=0;i<files.size();i++){
+			filename[i] = files.get(i).getFileName();
+		}
+		if(null !=filename[0]){
+			s.setDocPath(filename[0]);
+		}
+		if(null != filename[1]){
+			s.setPicPath(filename[1]);
+		}
 		s.update();
 		
 //		截取内容设置
