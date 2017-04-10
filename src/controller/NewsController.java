@@ -217,4 +217,9 @@ public class NewsController extends Controller{
 			render("/src/search.html");
 //			render("/search.html");
 		}
+		
+		//### for show one day
+		public void newsOne(){
+			render("/newsOne.html");
+		}
 }

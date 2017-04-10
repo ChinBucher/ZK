@@ -206,5 +206,10 @@ public class ActiveController extends Controller{
 			setAttr("newsPage", News.news.paginate(1, 10, title));
 			render("/src/search.html");
 		}
+		
+		//### for show one day
+		public void activeOne(){
+			render("/activeOne.html");
+		}
 	
 }

@@ -27,16 +27,16 @@
   }*/
 </style>
 <script>
-		    // You can also use "$(window).load(function() {"
-			    $(function () {
-			
-			      // Slideshow 1
-			      $("#slider1").responsiveSlides({
-			        maxwidth: 1600,
-			        speed: 600
-			      });
-			});
-		  </script>
+            // You can also use "$(window).load(function() {"
+                $(function () {
+            
+                  // Slideshow 1
+                  $("#slider1").responsiveSlides({
+                    maxwidth: 1600,
+                    speed: 600
+                  });
+            });
+          </script>
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -45,12 +45,12 @@
 <script type="text/javascript" src="${CTX}/js/easing.js"></script>
 <!--/script-->
 <script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-				});
-			});
+            jQuery(document).ready(function($) {
+                $(".scroll").click(function(event){     
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+                });
+            });
 </script>
 </head>
 <body>
@@ -107,42 +107,90 @@
     </div>
     <!-- script-for-menu --> 
     <script>
-				$("span.menu").click(function(){
-					$(".top-nav ul").slideToggle("slow" , function(){
-					});
-				});
-		 </script> 
+                $("span.menu").click(function(){
+                    $(".top-nav ul").slideToggle("slow" , function(){
+                    });
+                });
+         </script> 
     <!-- script-for-menu --> 
   </div>
   <!--End-main-header--> 
 </div>
 <!--End-header-->
-		<!--start-content-->
-		<div class="content">
-			<div class="container">
-				<!--start-blog-->
-				<div class="blog-header">
-				  <ol class="breadcrumb">
-            <li><a href="${CTX}/">四川省放射医学质控中心</a></li>
-					  <li class="active">质控活动</li>						  
-			    </ol>
-		    </div>
+        <!--start-content-->
+<div class="content">
+<div class="container">
+<!--start-blog-->
+<script type="text/javascript">
+    function back(){
+        window.history.go(-1);//返回上一页
+        window.loaction.reload();//重新加载，这个需要在上一个页面写
+    }
+</script>
+<ol class="breadcrumb">
+  <li><a onclick="javascript:back();">返回</a></li>
+  <!-- <li><a href="active">返回</a></li> -->
+  <!-- <li class="active">详情</li>                           -->
+</ol>
+<!--##### start-blog #####-->
+<div class="blog">
+    <div class="blog-header">
+        <h3>“医疗安全与质控”专项检查眉山市人民医院总结</h3>
+    </div>
+    <br>
+    <div class="single-page-artical">
+        <div class="artical-content">
+            
+            <p style="margin: 3% 10%;font-size: 1.3em;">
+            
 
-<!-- ####### start-应付演示DEMO ######## -->
-        <div class="blog-leftgrids">
-          <div class="image group">
-            <div class="images_3_of_1" style="position: relative;"> 
-              <a href="${CTX}/active/activeOne"><img style="object-fit:cover" height="220px" src="${CTX}/upload/active/p1.png" alt="检查专家合影" title="检查专家合影"></a>
-              <p>06<span>Apr</span></p>
-            </div>
-            <div class="span_2_of_3">
-              <h3><a href="${CTX}/active/activeOne">活动一号：“医疗安全与质控”专项检查眉山市人民医院总结</a></h3>
-              <p class="flod">“医疗安全与质控”专项检查眉山市人民医院总结</p>
-              <span><a href="${CTX}/active/activeOne">阅读更多</a></span>
-            </div>
-           </div>
-           <div class="artical-links">
-              <ul>
+一、检查时间 2017年3月22日<br>
+二、检查人员：宋彬 李真林 陈卫霞 宁刚 帅桃<br><br>
+<img src="${CTX}/upload/active/p1.png" title="banner1" style="width:40%; margin-left: 8%;">
+<!-- 图1 检查专家合影  -->
+<img src="${CTX}/upload/active/p2.jpg" title="banner1" style="width:40%;margin-left: 8%">
+<!-- 图2 质控检查通报会现场 -->
+<br><br>
+三、检查总结<br>
+（一）亮点：<br>
+1.成立了眉山市质控分中心。医疗质量控制制度建全，管理构架完善。并对下级医院开展了质控检查。<br>
+2.依法执业制度完善，大型设备配置许可证一一上墙。<br>
+3.放射科成立了质控小组，定期开展质控工作。<br>
+
+<br>
+<img src="${CTX}/upload/active/p3.png" title="banner1" style="width:80%;margin: auto 10%;">
+<!-- 图3 规章、制度检查 -->
+<br>
+<br>
+
+（二）存在问题：<br>
+1、MR检查间门口患者较多，存在医疗安全隐患，建议规范MR检
+查室门外就诊环境。<br>
+2、MR检查室未配备护士和抢救车，应对患者急救存在安全隐患。建议设立配备抢救设备和急救护士。<br>
+3、手卫生不足，院感意识不强。<br>
+4、辐射防护用具放置不当，CT防护方法不当。<br>
+5、影像诊断水平较好，影像报告比较全面，但是诊断报告未实行“双签”，建议按照卫计委的要求，实行诊断报告的“双签”。<br>
+6、诊断医师人力不够，建议医生技师人力合理规划，在保证工作质量和工作效率的同时，优化人力配置，避免潜在的医疗风险。<br>
+
+<br>
+<img src="${CTX}/upload/active/p4.jpg" title="banner1" style="width:80%;margin: auto 10%;">
+<br>
+<br>
+<!-- 图4 现场检查与指导 -->
+四、总结<br>
+1、医院远程会诊中心，硬件配置及运行状态均有不足。建议加强对远程会诊中心的投入与建设，发挥区域医疗中心在市域范围和医联体中的辐射作用，更好地服务于基层病人和同行。<br>
+2、建议眉山市卫计局把区域阅片中心设立在市质控中心的挂靠单位，有利于推动区域的放射质控中心工作。<br>
+<p style="margin-left:75%;">
+  四川省放射医学质控中心<br>
+  2017-3-25<br>
+</p>
+
+
+
+            </p>
+        </div>
+        <div class="artical-links" style="margin:auto 10%;">
+            <ul>
                 <li><img src="${CTX}/images/blog-icon1.png" title="date"><span>2017-04-06</span></li>
                 <li><a><img src="${CTX}/images/blog-icon4.png" title="Lables"><span>查看次数：10</span></a></li>
                 <li><a><img src="${CTX}/images/blog-icon5.png" title="permalink"><span>分享</span></a></li>
@@ -155,57 +203,20 @@
                   <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
                 </span>
 <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-              </ul>
-           </div>
-          </div>
-<!-- ############## end-应付演示DEMO ############# -->
-        
-        <!-- #重复部分 文章内容 -->
-        <#list actPage.getList() as x>
-				<div class="blog-leftgrids">
-					<div class="image group">
-						<div class="images_3_of_1" style="position: relative;"> 
-              <a href="${CTX}/active/detail/${x.id}"><img style="object-fit:cover" height="220px" src="${CTX}/upload/active/${x.picpath}" alt="${x.title}" title="${x.title}"></a>
-							<p>${x.day}<span>${x.month}</span></p>
-				    </div>
-						<div class="span_2_of_3">
-							<h3><a href="${CTX}/active/detail/${x.id}">${x.title} </a></h3>
-							<p class="flod">${x.cont}</p>
-							<span><a href="${CTX}/active/detail/${x.id}">阅读更多</a></span>
-		        </div>
-			     </div>
-					 <div class="artical-links">
-						 	<ul>
-						 		<li><img src="${CTX}/images/blog-icon1.png" title="date"><span>${x.date}</span></li>
-						 		<li><a><img src="${CTX}/images/blog-icon4.png" title="Lables"><span>查看次数：${x.count}</span></a></li>
-						 		<li><a><img src="${CTX}/images/blog-icon5.png" title="permalink"><span>分享</span></a></li>
-                <span class="bdsharebuttonbox" style="position: absolute;margin-left: 1%;margin-top: -4px;">
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-                  <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                </span>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-				 	    </ul>
-			     </div>
-			    </div>
-          </#list>
-          <!-- #分页 暂时保留div 视情况修改 -->
-					<div class="projects-pagnation">
-  				  <#include "/common/_paginate.html" />
-            <!-- <@paginate currentPage=actPage.pageNumber totalPage=actPage.totalPage actionUrl="active" /> -->
-            <@paginate currentPage=actPage.pageNumber totalPage=actPage.totalPage actionUrl= "${CTX}/active" />
+            </ul>
+        </div>
 
-			    </div>
-				<div class="clear"> </div>
-				<!--End-blog-->
-			</div>
-		</div>
+
+    </div>
+</div>
+<!--##### end-blog #####-->
+
+</div>
+<div class="clear"> </div>
+</div>
 
   <!-- #footer -->
-		<div class="footer">
+        <div class="footer">
   <div class="container">
     <div class="col-md-3 ftr_navi ftr">
       <h3>网站导航</h3>
@@ -241,16 +252,16 @@
 <!--End-container--> 
 <!----> 
 <script type="text/javascript">
-		$(document).ready(function() {
-				/*
-				var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear' 
-				};
-				*/
-		$().UItoTop({ easingType: 'easeOutQuart' });
+        $(document).ready(function() {
+                /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+                };
+                */
+        $().UItoTop({ easingType: 'easeOutQuart' });
 });
 </script> 
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a> 
