@@ -30,6 +30,14 @@
    		}
    </style>
    <script type="text/javascript">
+   window.onload = function(){
+        if(self.frameElement && self.frameElement.tagName == "IFRAME"){
+    　　// 页面在iframe中时处理
+         parent.location.reload();
+         window.opener.location.reload();   
+         self.opener.location.reload();   
+    　　}
+    }
     		function test(){
     		//alert("onclick");
 			$.ajax({
@@ -38,10 +46,10 @@
 				url: "${CTX}/user/login",
 				data: $("#myform").serialize(),
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert("error");
-					 alert("XMLHttpRequest.status: "+XMLHttpRequest.status);
-					 alert("XMLHttpRequest.readyState: "+XMLHttpRequest.readyState);
-					 alert("textStatus: "+textStatus);
+					alert("请刷新网页！");
+					 // alert("XMLHttpRequest.status: "+XMLHttpRequest.status);
+					 // alert("XMLHttpRequest.readyState: "+XMLHttpRequest.readyState);
+					 // alert("textStatus: "+textStatus);
 				 },
 				success: function(data){
 					//alert("success");

@@ -52,6 +52,24 @@
                 });
             });
 </script>
+<!-- 设置内容图片样式 -->
+<style type="text/css">
+    .blog{
+        padding-top: 0;
+    }
+    .artical-content{
+        margin: auto 10%;
+        font-size:1.3em;
+    }
+    .artical-content img{
+        width:80%;
+        margin: 2% 10%;
+    }
+    .artical-content div{
+        margin: 3% 10%;
+        font-size:1.3em;
+    }
+</style>
 </head>
 <body>
         <!--start-content-->
@@ -66,8 +84,6 @@
 </script>
 <ol class="breadcrumb">
   <li><a onclick="javascript:back();">返回</a></li>
-  <!-- <li><a href="active">返回</a></li> -->
-  <!-- <li class="active">详情</li>                           -->
 </ol>
 <div class="blog">
     <div class="blog-header">
@@ -76,8 +92,7 @@
     <br>
     <div class="single-page-artical">
         <div class="artical-content">
-            <img src="${CTX}/upload/active/${source.picpath}" title="banner1" style="width:40%;margin: auto 30%;">
-            <p style="text-indent:2em;margin: 3% 10%;">${source.content}</p>
+            <p>${source.content}</p>
         </div>
         <div class="artical-links" style="margin:auto 10%;">
             <ul>

@@ -45,7 +45,7 @@ public class NewsController extends Controller{
 	
 	@Before(AuthInterceptor.class)
 	public void add(){
-		render("/src/newsAdd.html");
+		render("/editor/newsAdd.html");
 	}
 	
 	//添加一个validator 验证信息是否有空缺
@@ -71,16 +71,6 @@ public class NewsController extends Controller{
 			s.setPicPath(filename[1]);
 		}
 		s.save();
-		
-//		截取内容显示
-		String content = s.getContent();
-		String cont;
-		if(content.length() > 100){
-			cont = content.substring(0, 100) + "...";
-		}else{
-			cont = content.substring(0, content.length()) + "...";
-		}
-		s.setCont(cont);
 		
 //		日期相关
 		Date currentDate = new Date(System.currentTimeMillis());
@@ -119,7 +109,7 @@ public class NewsController extends Controller{
 		s.update();
 		
 		setAttr("news", News.news.findById(getParaToInt()));
-		render("/src/newsEdit.html");
+		render("/editor/newsEdit.html");
 	}
 	
 	@Before(AuthInterceptor.class)

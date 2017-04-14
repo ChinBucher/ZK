@@ -18,21 +18,6 @@
 <link rel="stylesheet" href="${CTX}/css/responsiveslides.css">
 <script src="${CTX}/js/jquery.min.js"> </script>
 <script src="${CTX}/js/responsiveslides.min.js"></script>
-<style type="text/css">
-  /*.flod {
-    font-size: 18px;
-    font-family: 'Microsoft YaHei';
-    padding-right: 3%;
-    overflow: hidden;
-    width: 100%;
-    line-height: 24px;
-    height: 200px;
-    float: left;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    margin:10px;
-  }*/
-</style>
 <script>
 		    // You can also use "$(window).load(function() {"
 			    $(function () {
@@ -134,41 +119,6 @@
         <li class="active">行业新闻</li>
       </ol>
     </div>
-
-<!-- ####### start-应付演示DEMO ######## -->
-        <div class="blog-leftgrids">
-          <div class="image group">
-            <div class="images_3_of_1" style="position: relative;"> 
-              <a href="${CTX}/news/newsOne"><img style="object-fit:cover" height="220px" src="${CTX}/upload/news/p1.jpg" alt="检查专家合影" title="检查专家合影"></a>
-              <p>06<span>Apr</span></p>
-            </div>
-            <div class="span_2_of_3">
-              <h3><a href="${CTX}/news/newsOne">新闻一号：四川省放射医学质控中心绵阳市江油片区
-放射医学质控检查总结</a></h3>
-              <p class="flod">四川省放射医学质控中心绵阳市江油片区
-放射医学质控检查总结</p>
-              <span><a href="${CTX}/news/newsOne">阅读更多</a></span>
-            </div>
-           </div>
-           <div class="artical-links">
-              <ul>
-                <li><img src="${CTX}/images/blog-icon1.png" title="date"><span>2017-04-06</span></li>
-                <li><a><img src="${CTX}/images/blog-icon4.png" title="Lables"><span>查看次数：10</span></a></li>
-                <li><a><img src="${CTX}/images/blog-icon5.png" title="permalink"><span>分享</span></a></li>
-                <span class="bdsharebuttonbox" style="position: absolute;margin-left: 1%;margin-top: -4px;">
-                  <a href="#" class="bds_more" data-cmd="more"></a>
-                  <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                  <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-                  <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                </span>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-              </ul>
-           </div>
-          </div>
-<!-- ############## end-应付演示DEMO ############# -->
-
     <!-- #重复部分 -->
     <#list newsPage.getList() as x>
     <div class="blog-leftgrids">
@@ -179,14 +129,16 @@
         </div>
         <div class="span_2_of_3">
           <h3><a href="${CTX}/news/detail/${x.id}">${x.title}</a></h3>
-          <p class="flod">${x.cont}</p>
+          
           <span ><a href="${CTX}/news/detail/${x.id}">阅读更多</a></span> 
         </div>
       </div>
       <div class="artical-links">
         <ul>
-          <li><img src="${CTX}/images/blog-icon1.png" title="date"><span>2017-04-06</span></li>
-          <li><a><img src="${CTX}/images/blog-icon4.png" title="Lables"><span>查看次数：10</span></a></li>
+          <li><img src="${CTX}/images/blog-icon1.png" title="date"><span>${x.date}</span></li>
+          <!-- <li><a href="/login"><img src="${CTX}/images/blog-icon2.png" title="Admin"><span>管理</span></a></li> -->
+          <!-- <li><a><img src="${CTX}/images/blog-icon3.png" title="Comments"><span>讨论</span></a></li> -->
+          <li><a><img src="${CTX}/images/blog-icon4.png" title="Lables"><span>查看次数：${x.count}</span></a></li>
           <li><a><img src="${CTX}/images/blog-icon5.png" title="permalink"><span>分享</span></a></li>
           <span class="bdsharebuttonbox" style="position: absolute;margin-left: 1%;margin-top: -4px;">
                   <a href="#" class="bds_more" data-cmd="more"></a>

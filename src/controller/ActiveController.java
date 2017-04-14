@@ -45,7 +45,7 @@ public class ActiveController extends Controller{
 	
 	@Before(AuthInterceptor.class)
 	public void add(){
-		render("/src/actAdd.html");
+		render("/editor/actAdd.html");
 	}
 	
 	//添加一个validator 验证信息是否有空缺
@@ -71,16 +71,6 @@ public class ActiveController extends Controller{
 			s.setPicPath(filename[1]);
 		}
 		s.save();
-		
-//		截取内容设置
-		String content = s.getContent();
-		String cont;
-		if(content.length() > 100){
-			cont = content.substring(0, 100) + "...";
-		}else{
-			cont = content.substring(0, content.length()) + "...";
-		}
-		s.setCont(cont);
 		
 //		日期相关
 		Date currentDate = new Date(System.currentTimeMillis());
@@ -110,7 +100,7 @@ public class ActiveController extends Controller{
 		s.update();
 		
 		setAttr("active", Active.act.findById(getParaToInt()));
-		render("/src/actEdit.html");
+		render("/editor/actEdit.html");
 	}
 	
 	@Before(AuthInterceptor.class)
@@ -135,17 +125,6 @@ public class ActiveController extends Controller{
 			s.setPicPath(filename[1]);
 		}
 		s.update();
-		
-//		截取内容设置
-		String content = s.getContent();
-		String cont;
-		if(content.length() > 100){
-			cont = content.substring(0, 100) + "...";
-		}else{
-			cont = content.substring(0, content.length()) + "...";
-		}
-		System.out.println("cont:" + cont);
-		s.setCont(cont);
 		
 //		设置日期
 		Date currentDate = new Date(System.currentTimeMillis());
