@@ -1,9 +1,8 @@
 # ZK
-for zhikongSystem
-## a simple publish system developed by jfinal
-a d d  
- f o r  
- u s e r S y s  
-use for rename uploaded file 
-branch
-£ºÌáÇ°¿ª·¢£¬Íê³É·ÖÀàÉÏ´«
+### for zhikongSystem
+### a simple publish system developed by jfinal
+
+## branch-devï¼šenhance from branchï¼ˆclassified uploadï¼‰
+### add module for renaming uploaded file
+### changed functions in controllers, upload & update.
+
