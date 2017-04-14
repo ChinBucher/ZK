@@ -45,7 +45,6 @@ public class ActiveController extends Controller{
 	
 	@Before(AuthInterceptor.class)
 	public void add(){
-//		render("/src/actAdd.html");
 		render("/editor/actAdd.html");
 	}
 	
@@ -100,8 +99,6 @@ public class ActiveController extends Controller{
 			String path = uploadPath + "\\" + fileName;
 			System.out.println("文件下载路径："+path);
 		}
-		String contentt = getPara("active.content");
-		System.out.println("contentt: " + contentt);
 		Active s = getModel(Active.class);
 		System.out.println("s: " + s);
 		s.save();
@@ -144,7 +141,6 @@ public class ActiveController extends Controller{
 		s.update();
 		
 		setAttr("active", Active.act.findById(getParaToInt()));
-//		render("/src/actEdit.html");
 		render("/editor/actEdit.html");
 	}
 	
@@ -193,11 +189,6 @@ public class ActiveController extends Controller{
 	
 	@Before(AuthInterceptor.class)
 	public void update2() {
-		System.out.println("getPara(id): " + getPara("active.id"));
-		System.out.println("getParaToInt : "+getParaToInt());
-		Active st = getModel(Active.class);
-		System.out.println("st: " + st);
-		
 		System.out.println("update");
 		List<UploadFile> files = this.getFiles();
 		for(int i=0;i<files.size();i++){

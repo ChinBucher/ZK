@@ -1,6 +1,7 @@
 # ZK
-back up for zhikongSystem
-## a simple publish system developed by jfinal
+### back up for zhikongSystem
+### a simple publish system developed by jfinal
 
-master: ÏµÍ³µÄµ±Ç°°æ±¾£¬branch·ÖÖ§¿ª·¢³öÁË·ÖÀàÉÏ´«
-×¼±¸²âÊÔgit pull Ö÷·ÖÖ§²îÒì
+## master: ç³»ç»Ÿçš„å½“å‰ç‰ˆæœ¬
+### branchåˆ†æ”¯å¼€å‘å‡ºäº†åˆ†ç±»ä¸Šä¼ 
+### devåœ¨branchåŸºç¡€ä¸Šè¿›è¡Œä¸Šä¼ æ–‡ä»¶çš„é‡å‘½å

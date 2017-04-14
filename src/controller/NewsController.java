@@ -45,7 +45,6 @@ public class NewsController extends Controller{
 	
 	@Before(AuthInterceptor.class)
 	public void add(){
-//		render("/src/newsAdd.html");
 		render("/editor/newsAdd.html");
 	}
 	
@@ -96,7 +95,6 @@ public class NewsController extends Controller{
 		render("/editor/index.html");
 	}
 	public void upload2(){
-//		System.out.println("");
 		System.out.println("upload");
 		List<UploadFile> files = this.getFiles();
 		for(int i=0;i<files.size();i++){
@@ -107,8 +105,6 @@ public class NewsController extends Controller{
 			String path = uploadPath + "\\" + fileName;
 			System.out.println("文件下载路径："+path);
 		}
-		String contentt = getPara("news.content");
-		System.out.println("contentt: " + contentt);
 		News s = getModel(News.class);
 		System.out.println("s: " + s);
 		s.save();
@@ -161,7 +157,6 @@ public class NewsController extends Controller{
 		s.update();
 		
 		setAttr("news", News.news.findById(getParaToInt()));
-//		render("/src/newsEdit.html");
 		render("/editor/newsEdit.html");
 	}
 	
@@ -212,13 +207,9 @@ public class NewsController extends Controller{
 		
 		redirect("/news/manage");
 	}
+	
 	@Before(AuthInterceptor.class)
 	public void update2() {
-		System.out.println("getPara(id): " + getPara("news.id"));
-		System.out.println("getParaToInt : "+getParaToInt());
-		News st = getModel(News.class);
-		System.out.println("st: " + st);
-		
 		System.out.println("update");
 		List<UploadFile> files = this.getFiles();
 		for(int i=0;i<files.size();i++){
