@@ -1,8 +1,9 @@
 # ZK
-for zhikongSystem
-## a simple publish system developed by jfinal
-a d d  
- f o r  
- u s e r S y s  
-branch
-£ºÌáÇ°¿ª·¢£¬Íê³É·ÖÀàÉÏ´«
+### for zhikongSystem
+### a simple publish system developed by jfinal
+
+## branchï¼šenhanced from masterï¼ˆclassified uploadï¼‰
+
+### add module for classified uploaded file
+
+### changed functions in controllers, upload & update.
