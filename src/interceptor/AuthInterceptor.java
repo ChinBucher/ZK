@@ -25,6 +25,7 @@ public class AuthInterceptor implements Interceptor{
 		
 		if(loginUser == null){
 			System.out.println("AuthInterceptor_null");
+			c.setAttr("reload", true);
 			c.redirect("/login");
 		}else{
 			System.out.println("AuthInterceptor_notnull");

@@ -7,6 +7,7 @@ import com.jfinal.config.Routes;
 
 import controller.AboutController;
 import controller.ActiveController;
+import controller.HelloController;
 import controller.IndexController;
 import controller.NewsController;
 import controller.ServicesController;
@@ -28,6 +29,7 @@ public class FrontRoutes extends Routes{
 		add("active", ActiveController.class);
 		add("news", NewsController.class);
 		
+		add("hello", HelloController.class);
 //		add("/user", UserController.class);
 //		add("/src", SourceController.class);
 //		add("/login", LoginController.class, "/user");

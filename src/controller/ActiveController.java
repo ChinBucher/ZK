@@ -45,7 +45,8 @@ public class ActiveController extends Controller{
 	
 	@Before(AuthInterceptor.class)
 	public void add(){
-		render("/src/actAdd.html");
+//		render("/src/actAdd.html");
+		render("/editor/actAdd.html");
 	}
 	
 	//添加一个validator 验证信息是否有空缺
@@ -88,6 +89,48 @@ public class ActiveController extends Controller{
 		redirect("/active/manage");
 	}
 	
+	public void upload2(){
+		System.out.println("upload");
+		List<UploadFile> files = this.getFiles();
+		for(int i=0;i<files.size();i++){
+			String fileName = files.get(i).getFileName();
+			System.out.println("filename: " + fileName);
+			String uploadPath = files.get(i).getUploadPath();
+			System.out.println("文件上传路径："+uploadPath);
+			String path = uploadPath + "\\" + fileName;
+			System.out.println("文件下载路径："+path);
+		}
+		String contentt = getPara("active.content");
+		System.out.println("contentt: " + contentt);
+		Active s = getModel(Active.class);
+		System.out.println("s: " + s);
+		s.save();
+		
+//		【封装】截取内容显示 
+//		String content = s.getContent();
+//		String cont;
+//		if(content.length() > 100){
+//			cont = content.substring(0, 100) + "...";
+//		}else{
+//			cont = content.substring(0, content.length()) + "...";
+//		}
+//		s.setCont(cont);
+		
+//		【封装】日期相关
+		Date currentDate = new Date(System.currentTimeMillis());
+		String[] dateStr = currentDate.toString().split(" ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+		String dateNowStr = sdf.format(currentDate);  
+		String[] sdate = dateNowStr.toString().split(" ");
+		s.setDate(sdate[0]);
+		s.setDay( dateStr[2]);
+		s.setMonth(dateStr[1]);
+		s.update();
+		
+		System.out.println("s: " + s);
+		redirect("/active/manage");
+	}
+	
 	@Before(AuthInterceptor.class)
 	public void edit() {
 		Active s = Active.act.findById(getParaToInt());
@@ -101,7 +144,8 @@ public class ActiveController extends Controller{
 		s.update();
 		
 		setAttr("active", Active.act.findById(getParaToInt()));
-		render("/src/actEdit.html");
+//		render("/src/actEdit.html");
+		render("/editor/actEdit.html");
 	}
 	
 	@Before(AuthInterceptor.class)
@@ -144,6 +188,54 @@ public class ActiveController extends Controller{
 		s.setMonth(dateStr[1]);
 		
 		s.update();
+		redirect("/active/manage");
+	}
+	
+	@Before(AuthInterceptor.class)
+	public void update2() {
+		System.out.println("getPara(id): " + getPara("active.id"));
+		System.out.println("getParaToInt : "+getParaToInt());
+		Active st = getModel(Active.class);
+		System.out.println("st: " + st);
+		
+		System.out.println("update");
+		List<UploadFile> files = this.getFiles();
+		for(int i=0;i<files.size();i++){
+			String fileName = files.get(i).getFileName();
+			System.out.println("filename: " + fileName);
+			String uploadPath = files.get(i).getUploadPath();
+			System.out.println("文件上传路径："+uploadPath);
+			String path = uploadPath + "\\" + fileName;
+			System.out.println("文件下载路径："+path);
+		}
+		Active s = getModel(Active.class);
+		System.out.println("s: " + s);
+		String docpath = getPara("active.docpath"),
+				  picpath  = getPara("active.picpath");
+		s.setDocPath(docpath);
+		s.setPicPath(picpath);
+
+//		截取内容设置
+//		String content = s.getContent();
+//		String cont;
+//		if(content.length() > 100){
+//			cont = content.substring(0, 100) + "...";
+//		}else{
+//			cont = content.substring(0, content.length()) + "...";
+//		}
+//		s.setCont(cont);
+	
+//		日期设置
+		Date currentDate = new Date(System.currentTimeMillis());
+		String[] dateStr = currentDate.toString().split(" ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
+		String dateNowStr = sdf.format(currentDate);  
+		String[] sdate = dateNowStr.toString().split(" ");
+		s.setDate(sdate[0]);
+		s.setDay( dateStr[2]);
+		s.setMonth(dateStr[1]);
+		s.update();
+		
 		redirect("/active/manage");
 	}
 	
